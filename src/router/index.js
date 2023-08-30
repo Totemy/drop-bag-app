@@ -21,6 +21,11 @@ const routes = [
     name: "Register",
     component: () => import("../views/Register.vue"),
   },
+  {
+    path: "/navbar",
+    name: "navbar",
+    component: () => import("../components/global/Navbar.vue"),
+  },
 ]
 const router = new VueRouter({
   mode: "history",
