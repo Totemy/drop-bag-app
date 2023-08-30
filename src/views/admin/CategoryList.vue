@@ -4,6 +4,7 @@
             Add new Category
             <form @submit.prevent="AddCat" >
                 <input id="name" type="text" placeholder="Name category">
+                <input type="file" id="image" accept=".jpg, .png"  @change="previewImage" />
                 <button type="submit" >Add</button>
             </form>
         </div>
@@ -47,6 +48,12 @@ import {
   updateDoc,
   deleteDoc,
 } from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 const db = getFirestore();
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -55,11 +62,13 @@ export default {
     return {
       cat: {
         name: "",
+        image: "",
       },
       Category: [],
       DataCatID: {
         name: "",
         id: "",
+        image: "",
       },
     };
   },
@@ -72,9 +81,47 @@ export default {
         collection(db, "categories"),
         {
           name: this.cat.name,
+          image: this.cat.image
         },
         location.reload()
       );
+    },
+    AddImg() {
+      // Upload Image here
+      this.img = null;
+      const storage = getStorage();
+      // Create a child reference
+      const imagesRef = ref(storage, "images");
+      // imagesRef now points to 'images'
+      // Child references can also take paths delimited by '/'
+      const storageRef = ref(imagesRef, `${this.imageData.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, this.imageData);
+      // 1. 'state_changed' observer, called any time the state changes
+      // 2. Error observer, called on failure
+      // 3. Completion observer, called on successful completion
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          this.uploadValue =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        },
+        (error) => {
+          console.log(error.message);
+        },
+        () => {
+          this.uploadValue = 100;
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+            this.img = url;
+            // console.log(this.img);
+          });
+        }
+      );
+    },
+    previewImage(event) {
+      this.uploadValue = 0;
+      this.img = null;
+      this.imageData = event.target.files[0];
+      this.AddImg();
     },
     GetOneCategory(id, name) {
       this.DataCatID.name = name;
@@ -109,6 +156,7 @@ export default {
         this.Category.push({
           id: doc.id,
           name: doc.data().name,
+          image: doc.data().image,
         });
       });
     },
