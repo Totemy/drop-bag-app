@@ -1,0 +1,22 @@
+<template>
+    <aside >
+     <li>
+        <ul>
+            <router-link to="/sidebar/category"><button v-if="user == null" active>Category</button></router-link>
+            <router-link to="/sidebar/products"><button v-if="user == null" >Products</button></router-link>
+            <!-- <router-link to="/sidebar/order"><button v-if="user == null" >Order</button></router-link> -->
+            <router-link to="/sidebar/profile"><button v-if="user == null" >Profile</button></router-link>
+        </ul>
+     </li>
+    </aside>
+  </template>
+  <script>
+  // import profile from "@/views/profile.vue";
+  export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: "sidebar",
+    components: {
+      // profile,
+    },
+  };
+  </script>

@@ -26,6 +26,38 @@ const routes = [
     name: "navbar",
     component: () => import("../components/global/Navbar.vue"),
   },
+  {
+    path: "/Dash",
+    name: "Dash",
+    component: () => import("../views/admin/Dashboard.vue"),
+    children: [
+      {
+        path: "/sidebar",
+        name: "sidebar",
+        component: () => import("../components/global/SidebarSettings.vue"),
+        // meta: { requiresAuth: true },
+        children: [
+          {
+            path: "category",
+            component: () => import("../views/admin/CategoryList.vue"),
+            // meta: { requiresAuth: true },
+          },
+          {
+            path: "Products",
+            // name: "AllProd",
+            component: () => import("../views/admin/ProductsList.vue"),
+            // meta: { requiresAuth: true },
+          },
+          {
+            path: "profile",
+            // name: "profile",
+            component: () => import("../views/Profile.vue"),
+            meta: { requiresAuth: true },
+          },
+        ],
+      },
+    ],
+  },
 ]
 const router = new VueRouter({
   mode: "history",
