@@ -54,6 +54,10 @@ const routes = [
             component: () => import("../views/Profile.vue"),
             meta: { requiresAuth: true },
           },
+          {
+            path: "droplist",
+            component: () => import("../views/admin/DropList.vue"),
+          }
         ],
       },
     ],

@@ -69,7 +69,7 @@ export default {
                     });
                   } else {
                     router.push({
-                      name: "HomeUser",
+                      name: "home",
                     });
                   }
                 }
