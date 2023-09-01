@@ -1,7 +1,6 @@
 <template>
     <div class="admin-product">
         <div class="row">
-            <button> Add new Product</button>
             <div>
                 <form @submit.prevent="AddProd">
                     <input  id="name"
@@ -16,7 +15,7 @@
                         v-model="prod.price"
                         type="number"
                         placeholder="price">
-                </form>
+                
                 <div>
                     <select id="category" v-model="categoryId">
                         <option  v-for="category in categories"
@@ -32,6 +31,8 @@
                 :value="messageSuccess"
                 show
                 v-if="messageSuccess === 'Added'">Added</p>
+                <button> Add new Product</button>
+              </form>
             </div>
         </div>
         <div class="row">
@@ -53,16 +54,15 @@
                             <td>
                                 <img :src="Prod.image" alt="img" height="60px" width="60px" />
                             </td>
-                            <td>{{ Prod.price }}DT</td>
+                            <td>{{ Prod.price }}грн</td>
                             <td>
-                                <b-button
-                                v-b-modal.modal-edit
-                                variant="success"
-                                class="me-2 p-2"
-                                @click="GetOneProd(Prod.id, Prod.name)"
-                                >
-                                Edit
-                                </b-button>
+                                <button
+                                  variant="success"
+                                  class="me-2 p-2"
+                                  @click="GetOneProd(Prod.id, Prod.name)"
+                                  >
+                                  Edit
+                                </button>
                                 <button class="btn btn-danger p-2" @click="DeleteProd(Prod.id)">
                                 Delete
                                 </button>

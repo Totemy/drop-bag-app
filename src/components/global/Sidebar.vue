@@ -2,11 +2,11 @@
     <aside >
      <li>
         <ul>
-            <router-link to="/sidebar/category"><button v-if="user == null" active>Category</button></router-link>
-            <router-link to="/sidebar/products"><button v-if="user == null" >Products</button></router-link>
+            <router-link to="/sidebar/category"><button active>Category</button></router-link>
+            <router-link to="/sidebar/products"><button >Products</button></router-link>
             <!-- <router-link to="/sidebar/order"><button v-if="user == null" >Order</button></router-link> -->
-            <router-link to="/sidebar/profile"><button v-if="user == null" >Profile</button></router-link>
-            <router-link to="/sidebar/droplist"><button v-if="user == null" >Droplist</button></router-link>
+            <router-link to="/sidebar/profile"><button >Profile</button></router-link>
+            <router-link to="/sidebar/droplist"><button >Droplist</button></router-link>
         </ul>
      </li>
     </aside>

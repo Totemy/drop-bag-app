@@ -7,5 +7,5 @@ module.exports = defineConfig({
         "timers": require.resolve("timers-browserify")
       }
     }
-  }
+  },
 })
