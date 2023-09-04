@@ -17,41 +17,52 @@
 </template>
 
 <script>
+import axios from 'axios';
 import xml2js from 'xml2js';
-
 export default {
-  data() {
-    return {
-      tableData: [],
-    };
-  },
-  methods: {
-    handleFileUpload(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const xmlString = e.target.result;
-          this.parseXml(xmlString);
-        };
-        reader.readAsText(file);
-      }
+  
+    mounted(){ 
+     //xml file calling
+      axios.get('assets/users.xml')
+        .then(response => {
+          this.parseXML(response.data)  
+              .then((data) => {  
+                this.xmlItems = data;  
+              });       
+        })
+      
     },
-    parseXml(xmlString) {
-      const parser = new xml2js.Parser({ explicitArray: false });
-      parser.parseString(xmlString, (err, result) => {
-        if (err) {
-          console.error('Error parsing XML:', err);
-        } else {
-          const data = result.root; // Assuming the root element name is 'root'
-          if (Array.isArray(data.item)) {
-            this.tableData = data.item;
-          } else {
-            this.tableData = [data.item];
-          }
-        }
-      });
+    methods: {
+      //xml file data parsing
+      parseXML(data) {  
+                 return  new Promise(resolve => {  
+                      var k=""; 
+                       var arr = [],  
+                      parser = new xml2js.Parser(  
+                        {  
+                          trim: true,  
+                          explicitArray: true  
+                        });  
+                    parser.parseString(data, function (err, result) {  
+                      var obj = result.Employee;  
+                      for (k in obj.emp) {  
+                        var item = obj.emp[k];  
+                        arr.push({  
+                          id: item.id[0],  
+                          name: item.name[0],  
+                          email: item.email[0],  
+                          
+                        });  
+                      }  
+                      resolve(arr);  
+                    });  
+                  });  
+              }
     },
-  },
-};
+      data: function() {
+  return {
+    xmlItems:[]
+  }
+}  
+}
 </script>
