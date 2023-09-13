@@ -1,68 +1,75 @@
 <template>
-  <div>
-    <input type="file" @change="handleFileUpload" accept=".xml" />
-    <table v-if="tableData.length > 0">
-      <thead>
-        <tr>
-          <th v-for="(value, key) in tableData[0]" :key="key">{{ key }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in tableData" :key="index">
-          <td v-for="(value, key) in item" :key="key">{{ value }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div>
+        <form @submit.prevent="checkData">
+            <input
+                id="xmlLink"
+                v-model="xmlLink"
+                type="text"
+                placeholder="Input link"
+            />
+            <button type="submit">Check datas</button>
+        </form>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in xmlItems" :key="item.id">
+                        <td>{{ item.id }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </template>
 
 <script>
-import axios from 'axios';
-import xml2js from 'xml2js';
+import axios from "axios";
+import xml2js from "xml2js";
 export default {
-  
-    mounted(){ 
-     //xml file calling
-      axios.get('assets/users.xml')
-        .then(response => {
-          this.parseXML(response.data)  
-              .then((data) => {  
-                this.xmlItems = data;  
-              });       
-        })
-      
+    data: function () {
+        return {
+            xmlLink: "",
+            xmlItems: "",
+            parsedData: null
+        };
     },
     methods: {
-      //xml file data parsing
-      parseXML(data) {  
-                 return  new Promise(resolve => {  
-                      var k=""; 
-                       var arr = [],  
-                      parser = new xml2js.Parser(  
-                        {  
-                          trim: true,  
-                          explicitArray: true  
-                        });  
-                    parser.parseString(data, function (err, result) {  
-                      var obj = result.Employee;  
-                      for (k in obj.emp) {  
-                        var item = obj.emp[k];  
-                        arr.push({  
-                          id: item.id[0],  
-                          name: item.name[0],  
-                          email: item.email[0],  
-                          
-                        });  
-                      }  
-                      resolve(arr);  
-                    });  
-                  });  
-              }
-    },
-      data: function() {
-  return {
-    xmlItems:[]
-  }
-}  
-}
+        checkData() {
+            axios
+                .get(`https://cors-anywhere.herokuapp.com/${this.xmlLink}`)
+                .then((response) => {
+                    this.parseXML(response.data).then((data) => {
+                        this.xmlItems = data;
+                    });
+                });
+        },
+        parseXML(data) {
+            return new Promise((resolve) => {
+                var k = "";
+                var arr = [],
+                    parser = new xml2js.Parser({
+                        trim: true,
+                        explicitArray: true
+                    });
+                parser.parseString(data, function (err, result) {
+                    var obj = result.yml_catalog;
+                    for (k in obj.offers) {
+                        var item = obj.offer[k];
+                        arr.push({
+                            id: item.id,
+                        });
+                    }
+                    resolve(arr);
+                });
+            });
+        }
+    }
+};
 </script>

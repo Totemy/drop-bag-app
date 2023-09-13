@@ -16,6 +16,7 @@
                         <router-link to="/login"><button  v-if="user == null">Sign In</button></router-link>
                         <router-link to="/register"><button v-if="user == null">Sign Up</button></router-link>
                         <button  v-if="user" @click="logout()">Sign Out</button>
+                        <router-link to="/dash">Admin</router-link>
                     </ul>
                 </div>
             </div>
