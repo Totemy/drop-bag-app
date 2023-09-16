@@ -21,7 +21,8 @@
                 </thead>
                 <tbody>
                     <tr v-for="item in xmlItems" :key="item.id">
-                        <td>{{ item.id }}</td>
+                        <td> **** {{ item.name }}</td>
+                        <td> id ==== {{ item.id }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -60,10 +61,14 @@ export default {
                     });
                 parser.parseString(data, function (err, result) {
                     var obj = result.yml_catalog;
-                    for (k in obj.offers) {
-                        var item = obj.offer[k];
+                    console.log(obj);
+                    console.log(obj.shop[0].offers[0].offer[1]);  //display element foreach replace 1 to k
+
+                    for (k in obj.shop[0].offers[0].offer) {
+                        var item = obj.shop[0].offers[0].offer[k];
                         arr.push({
-                            id: item.id,
+                            name: item.name,
+                            id: item.$.id
                         });
                     }
                     resolve(arr);
