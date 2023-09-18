@@ -21,8 +21,10 @@
                 </thead>
                 <tbody>
                     <tr v-for="item in xmlItems" :key="item.id">
-                        <td> **** {{ item.name }}</td>
-                        <td> id ==== {{ item.id }}</td>
+                        <td> **** {{ item.id }}</td>
+                        <td> id ==== {{ item.name }}</td>
+                        <td> {{ item.price }}</td>
+                        <td> {{ item.url }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -68,7 +70,17 @@ export default {
                         var item = obj.shop[0].offers[0].offer[k];
                         arr.push({
                             name: item.name,
-                            id: item.$.id
+                            id: item.$.id,
+                            groupId: item.$.group_id,
+                            categodyId: item.categoryId,
+                            description:item.description,
+                            param:item.param,
+                            price: item.price,
+                            vendor: item.vendor,
+                            vendorcode:item.vendorCode,
+                            url: item.url,
+                            picture: item.picture,
+                            disabled: item.disabled
                         });
                     }
                     resolve(arr);
