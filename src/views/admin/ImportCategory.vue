@@ -10,21 +10,20 @@
             <button type="submit">Check datas</button>
         </form>
         <div>
+            <h2>Import categories</h2>
             <table>
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Parent Id</th>
                         <th>Name</th>
-                        <th>Price</th>
-                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="item in xmlItems" :key="item.id">
-                        <td> **** {{ item.id }}</td>
-                        <td> id ==== {{ item.name }}</td>
-                        <td> {{ item.price }}</td>
-                        <td> {{ item.url }}</td>
+                        <td> {{ item.id }}</td>
+                        <td> {{ item.parentid }}</td>
+                        <td> {{ item.name }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -51,6 +50,7 @@ export default {
                     this.parseXML(response.data).then((data) => {
                         this.xmlItems = data;
                     });
+                    
                 });
         },
         parseXML(data) {
@@ -63,24 +63,12 @@ export default {
                     });
                 parser.parseString(data, function (err, result) {
                     var obj = result.yml_catalog;
-                    console.log(obj);
-                    console.log(obj.shop[0].offers[0].offer[1]);  //display element foreach replace 1 to k
-
-                    for (k in obj.shop[0].offers[0].offer) {
-                        var item = obj.shop[0].offers[0].offer[k];
+                    for (k in obj.shop[0].categories[0].category) {
+                        var item = obj.shop[0].categories[0].category[k];
                         arr.push({
-                            name: item.name,
-                            id: item.$.id,
-                            groupId: item.$.group_id,
-                            categodyId: item.categoryId,
-                            description:item.description,
-                            param:item.param,
-                            price: item.price,
-                            vendor: item.vendor,
-                            vendorcode:item.vendorCode,
-                            url: item.url,
-                            picture: item.picture,
-                            disabled: item.disabled
+                            id:item.$.id,
+                            parentid:item.$.parentId,
+                            name:item._
                         });
                     }
                     resolve(arr);

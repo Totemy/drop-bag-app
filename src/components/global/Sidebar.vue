@@ -6,7 +6,8 @@
             <router-link to="/sidebar/products"><button >Products</button></router-link>
             <!-- <router-link to="/sidebar/order"><button v-if="user == null" >Order</button></router-link> -->
             <router-link to="/sidebar/profile"><button >Profile</button></router-link>
-            <router-link to="/sidebar/droplist"><button >Droplist</button></router-link>
+            <router-link to="/sidebar/import-products"><button >Import Product</button></router-link>
+            <router-link to="/sidebar/import-category"><button >Import Category</button></router-link>
         </ul>
      </li>
     </aside>
