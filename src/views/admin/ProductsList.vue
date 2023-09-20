@@ -112,7 +112,6 @@ export default {
       },
       categories: [],
       categoryId: null,
-
       uploadValue: 0,
       img: null,
       imageData: null,

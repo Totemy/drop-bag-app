@@ -39,7 +39,6 @@ import {
   collection,
   addDoc,
   getFirestore,
-
 } from "firebase/firestore";
 const db = getFirestore();
 export default {
@@ -54,8 +53,6 @@ export default {
         AddCat() {
             for (let k in this.xmlItems){
                 var data = this.xmlItems[k];
-                console.log(typeof(data[k].id));
-                console.log(data[k].id);
                 addDoc(
                     collection(db, "categories"),
                     {
@@ -89,11 +86,8 @@ export default {
                         var item = obj.shop[0].categories[0].category[k];
                         arr.push({
                             id:item.$.id,
-                            //parentid:item.$.parentId,
                             name:item._
-                            
                         });
-                        console.log(arr[k].id)
                         addDoc(
                                 collection(db, "categories"),
                                 {
@@ -101,11 +95,13 @@ export default {
                                     name: arr[k].name
                                 }
                             )
-                            alert('Database updated')
+                            
                     }
                     resolve(arr);
+                    alert('Database updated')
                 });
             });
+           
         }
     }
 };

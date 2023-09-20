@@ -35,15 +35,40 @@
 <script>
 import axios from "axios";
 import xml2js from "xml2js";
+import {
+  collection,
+  getFirestore,
+  query,
+  getDocs,
+  firestore,
+} from "firebase/firestore";
+const db = getFirestore();
+const categoriesCollection = firestore.collection("categories");
 export default {
     data: function () {
         return {
             xmlLink: "",
             xmlItems: "",
-            parsedData: null
+            parsedData: null,
+            categories: [],
+            categoryIdLink: null,
         };
     },
+    created() {
+        this.getCategory();
+    },
     methods: {
+        async getCategory() {
+            const q = query(collection(db, "categories")),
+                querySnapshot = await getDocs(q);
+            this.categories = [];
+            querySnapshot.forEach((doc) => {
+                this.categories.push({
+                id: doc.id,
+                name: doc.data().name,
+                });
+            });
+        },
         checkData() {
             axios
                 .get(`https://cors-anywhere.herokuapp.com/${this.xmlLink}`)
@@ -54,6 +79,7 @@ export default {
                     
                 });
         },
+        
         parseXML(data) {
             return new Promise((resolve) => {
                 var k = "";
@@ -64,9 +90,6 @@ export default {
                     });
                 parser.parseString(data, function (err, result) {
                     var obj = result.yml_catalog;
-                    console.log(obj);
-                    console.log(obj.shop[0].offers[0].offer[1]);  //display element foreach replace 1 to k
-
                     for (k in obj.shop[0].offers[0].offer) {
                         var item = obj.shop[0].offers[0].offer[k];
                         arr.push({
@@ -83,6 +106,17 @@ export default {
                             picture: item.picture,
                             disabled: item.disabled
                         });
+                        categoriesCollection
+                        .where("categoryId", "==", arr[k].categodyId)
+                            .get()
+                            .then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    const subcollectionRef = doc.ref.collection("products");
+                                    subcollectionRef.add({
+                                        name: this.prod.name
+                                    })
+                            })
+                        })
                     }
                     resolve(arr);
                 });
