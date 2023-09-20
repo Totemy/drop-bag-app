@@ -11,6 +11,7 @@
         </form>
         <div>
             <h2>Import categories</h2>
+            <button @click="AddCat">Add to database</button>
             <table>
                 <thead>
                     <tr>
@@ -34,6 +35,13 @@
 <script>
 import axios from "axios";
 import xml2js from "xml2js";
+import {
+  collection,
+  addDoc,
+  getFirestore,
+
+} from "firebase/firestore";
+const db = getFirestore();
 export default {
     data: function () {
         return {
@@ -43,6 +51,20 @@ export default {
         };
     },
     methods: {
+        AddCat() {
+            for (let k in this.xmlItems){
+                var data = this.xmlItems[k];
+                console.log(typeof(data[k].id));
+                console.log(data[k].id);
+                addDoc(
+                    collection(db, "categories"),
+                    {
+                        categoryId: data[k].id,
+                        name: data[k].name
+                    }
+                )
+            }
+        },
         checkData() {
             axios
                 .get(`https://cors-anywhere.herokuapp.com/${this.xmlLink}`)
@@ -67,9 +89,19 @@ export default {
                         var item = obj.shop[0].categories[0].category[k];
                         arr.push({
                             id:item.$.id,
-                            parentid:item.$.parentId,
+                            //parentid:item.$.parentId,
                             name:item._
+                            
                         });
+                        console.log(arr[k].id)
+                        addDoc(
+                                collection(db, "categories"),
+                                {
+                                    categoryId: arr[k].id,
+                                    name: arr[k].name
+                                }
+                            )
+                            alert('Database updated')
                     }
                     resolve(arr);
                 });
