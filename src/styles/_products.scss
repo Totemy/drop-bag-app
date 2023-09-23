@@ -1,0 +1,17 @@
+.products{
+
+    .card{
+        display: block;
+        border-radius: 5px ;
+        background-color: gray;
+        &__details{
+            margin: 5px;
+        }
+        &__img{
+            max-width: 100%;
+        }
+    }
+    h3{
+        font-size: 25px;
+    }
+}

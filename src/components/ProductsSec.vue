@@ -2,8 +2,11 @@
     <div class="products">
         <h3>Products</h3>
         <div class="row">
-            <div class="col" v-for="prod in Products" :key="prod.id">
-                <img :src="prod.image" >
+            <div class="col-4" v-for="prod in Products" :key="prod.id">
+              <div class="card">
+
+              </div>
+                <img class="card__img" :src="prod.image" >
                 <div class="card__details">
                     <button @click="
                 addToCart({
@@ -13,7 +16,7 @@
                   image: prod.image,
                   qte: qte,
                 })
-              ">Fill</button>
+              ">До кошика</button>
               <button :to="{
                 name: 'Product',
                 params: {
@@ -108,7 +111,7 @@ export default {
           name: doc.data().name,
           description: doc.data().description,
           price: doc.data().price,
-          image: doc.data().image,
+          image: doc.data().picture[0],
         });
       });
       //  console.log(this.Products[0].id)
