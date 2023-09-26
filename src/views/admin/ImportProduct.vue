@@ -122,6 +122,7 @@ export default {
                                 vendorCode: arr[k].vendorcode,
                                 url: arr[k].url,
                                 picture: arr[k].picture,
+                                price: arr[k].price
                                // disabled: arr[k].disabled,
                             });
                             console.log("Added to database")

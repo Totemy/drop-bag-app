@@ -1,13 +1,18 @@
 <template>
     <div class="category-sec">
+      <div class="caegory">
         <h3>Categories</h3>
         <div class="row">
-            <div class="col"  v-for="cat in Category" :key="cat.id">
-                <div class="col">
+            <div class="col-2"  v-for="cat in Category" :key="cat.id">
+                <div class="">
+                  <div class="category__card">
                     <p>{{ cat.name }}</p>
+                  </div>
                 </div>
             </div>
         </div>
+      </div>
+        
     </div>
 </template>
 <script>
