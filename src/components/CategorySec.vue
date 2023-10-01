@@ -3,10 +3,11 @@
       <div class="caegory">
         <h3>Categories</h3>
         <div class="row">
-            <div class="col-2"  v-for="cat in Category" :key="cat.id">
+            <div class="col-4"  v-for="cat in Category" :key="cat.id">
                 <div class="">
                   <div class="category__card">
-                    <p>{{ cat.name }}</p>
+                    <p class="category__text">{{ cat.name }}</p>
+                    <img class="category__image" :src="cat.image" />
                   </div>
                 </div>
             </div>
@@ -38,6 +39,7 @@ export default {
         this.Category.push({
           id: doc.id,
           name: doc.data().name,
+          image: doc.data().image,
         });
       });
     },
