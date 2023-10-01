@@ -1,6 +1,6 @@
 <template>
     <div class="products">
-        <h3>Products</h3>
+        <h3>Товари</h3>
         <div class="row">
             <div class="col-4" v-for="prod in Products" :key="prod.id">
               <div class="card">
@@ -27,7 +27,7 @@
                   desc: prod.description,
                 },
               }">
-                Search
+                Відкрити
               </button>
               <div >
                 <div>

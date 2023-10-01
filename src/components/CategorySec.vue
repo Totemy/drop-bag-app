@@ -1,7 +1,7 @@
 <template>
     <div class="category-sec">
       <div class="caegory">
-        <h3>Categories</h3>
+        <h3>Категорії</h3>
         <div class="row">
             <div class="col-4"  v-for="cat in Category" :key="cat.id">
                 <div class="">

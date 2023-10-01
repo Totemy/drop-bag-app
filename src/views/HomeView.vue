@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Navbar/>
-    <FeaturesComponent/>
+
     <CategorySec/>
     <ProductSec />
 
@@ -10,7 +10,6 @@
 
 <script>
 // @ is an alias to /src
-import FeaturesComponent from "@/components/FeaturesComponent.vue";
 import CategorySec from "@/components/CategorySec.vue";
 import ProductSec from "@/components/ProductsSec.vue";
 //import OfferSec from "@/components/Offer.vue";
@@ -18,7 +17,6 @@ import Navbar from "@/components/global/Navbar.vue"
 export default {
   name: 'HomeView',
   components: {
-    FeaturesComponent,
     CategorySec,
     ProductSec,
     Navbar
