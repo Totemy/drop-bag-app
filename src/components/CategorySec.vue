@@ -1,6 +1,5 @@
 <template>
-    <div class="category-sec">
-      <div class="caegory">
+      <div class="category">
         <h3>Категорії</h3>
         <div class="row">
             <div class="col-4"  v-for="cat in Category" :key="cat.id">
@@ -13,8 +12,6 @@
             </div>
         </div>
       </div>
-        
-    </div>
 </template>
 <script>
 import { collection, getFirestore, query, getDocs } from "firebase/firestore";

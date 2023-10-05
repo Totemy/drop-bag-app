@@ -1,11 +1,18 @@
 <template>
-    <div class="topbar">
+    <div class="navbar">
         <div class="row">
             <div class="col">
-                <a href="">Про нас</a>
-                <a href="">Контакти</a>
-                <a href="">Допомога</a>
-                <div class="dropdown">
+                <div class="navbar__dropdown">
+                    Category
+                    <div class="navbar__dropdown-content">
+                        <p>
+                            Hello
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="dropdown navbar__button">
                     <button
                         @click="isOpen = !isOpen"
                         class="btn btn-secondary dropdown-toggle"
@@ -28,7 +35,7 @@
                         <router-link to="/dash">Admin</router-link>
                     </ul>
                 </div>
-          </div>
+            </div>
         </div>
     </div>
 </template>

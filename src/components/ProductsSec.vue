@@ -57,7 +57,7 @@
                 </button>
                 <button 
                     :to="{
-                    name: 'Product',
+                    name: item.name,
                     params: {
                     id: item.id,
                     name: item.name,
@@ -114,7 +114,6 @@ export default {
           image: doc.data().picture[0],
         });
       });
-      //  console.log(this.Products[0].id)
     },
     addToCart(product) {
       this.$root.$emit("addToCart", product);
