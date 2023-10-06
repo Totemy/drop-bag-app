@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <Navbar/>
+    <div class="container">
     <CategorySec/>
+    </div>
+
   </div>
 </template>
 

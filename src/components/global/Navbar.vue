@@ -1,20 +1,17 @@
 <template>
     <div class="navbar">
         <div class="row">
-            <div class="col">
-                <div class="navbar__button-category">
+            <div class="col-3">
+                <div class="">
                     <button
                         @click="catOpen = !catOpen"
-                        class="btn btn-secondary dropdown-toggle"
+                        class="btn btn-secondary dropdown-toggle navbar__button-category"
                         type="button"
                     >
                         Category
                     </button>
                     <div class="navbar__dropdown" v-if="catOpen">
-                        <div
-                            v-for="cat in Category"
-                            :key="cat.id"
-                        >
+                        <div v-for="cat in Category" :key="cat.id">
                             <div class="navbar__dropdown-item">
                                 {{ cat.name }}
                             </div>
@@ -22,33 +19,50 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-auto">
                 <div class="navbar__search">
-                    <input type="text"  />
+                    <input type="text" />
                 </div>
             </div>
-            <div class="col">
-                <div class="dropdown navbar__login ">
-                    <button 
-                        @click="isOpen = !isOpen"
-                        class="btn btn-secondary dropdown-toggle"
-                        type="button"
-                    >
-                        My Account
-                    </button>
-                    <ul v-if="isOpen">
-                        <router-link to="/login"
-                            ><button v-if="user == null">
+            <div class="col-3">
+                <button
+                    @click="isOpen = !isOpen"
+                    class="btn btn-secondary dropdown-toggle navbar__button-login"
+                    type="button"
+                >
+                    My Account
+                </button>
+                <div class="navbar__login">
+                    <ul v-if="isOpen" class="navbar__login-item">
+                        <div class="row">
+                            <button
+                                class="navbar__button-loginpage"
+                                to="/login"
+                                v-if="user == null"
+                            >
                                 Sign In
-                            </button></router-link
-                        >
-                        <router-link to="/register"
-                            ><button v-if="user == null">
+                            </button>
+                            <button
+                                class="navbar__button-loginpage"
+                                v-if="user == null"
+                                to="/register"
+                            >
                                 Sign Up
-                            </button></router-link
-                        >
-                        <button v-if="user" @click="logout()">Sign Out</button>
-                        <router-link to="/dash">Admin</router-link>
+                            </button>
+                            <button
+                                class="navbar__button-loginpage"
+                                v-if="user"
+                                @click="logout()"
+                            >
+                                Sign Out
+                            </button>
+                            <button
+                                class="navbar__button-loginpage-admin"
+                                to="/dash"
+                            >
+                                Admin
+                            </button>
+                        </div>
                     </ul>
                 </div>
             </div>
@@ -114,9 +128,9 @@ export default {
             this.Category = [];
             querySnapshot.forEach((doc) => {
                 this.Category.push({
-                id: doc.id,
-                name: doc.data().name,
-                image: doc.data().image,
+                    id: doc.id,
+                    name: doc.data().name,
+                    image: doc.data().image
                 });
             });
         },

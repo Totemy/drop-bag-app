@@ -6,11 +6,34 @@
     top:0;
     color: white;
     &__login{
-        margin-left: auto; 
+        position: absolute;
+        right: 36px;
+        top: 50px;
+        &-item{
+            width: 100px;
+
+        }
     }
     &__button{
         &-category{
             margin-left: 5px ;
+        }
+        &-login{
+            position: absolute;
+            right: 10px;
+        }
+        &-loginpage{
+            width: 126px;
+            background-color: #113946;
+            padding: 5px;
+            color: white;
+            border: 1px solid white;
+            &-admin{
+                width: 126px;
+                padding: 5px;
+                background-color: red;
+                border: 1px solid white;
+            }
         }
     }
     &__dropdown{
@@ -28,5 +51,6 @@
     }
     &__search{
         margin-top: 5px;
+        width: 100%;
     }
 }
