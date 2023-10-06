@@ -1,7 +1,7 @@
 <template>
     <div class="navbar">
         <div class="row">
-            <div class="col-3">
+            <div class="col">
                 <div class="">
                     <button
                         @click="catOpen = !catOpen"
@@ -19,12 +19,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-auto">
+            <div class="col">
                 <div class="navbar__search">
                     <input type="text" />
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col">
                 <button
                     @click="isOpen = !isOpen"
                     class="btn btn-secondary dropdown-toggle navbar__button-login"
