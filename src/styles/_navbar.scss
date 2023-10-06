@@ -5,33 +5,28 @@
     left: 0;
     top:0;
     color: white;
-    &__dropdown{
-        position: relative;
-        display: inline-block;
-        &-content{
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            &:hover{
-                display: block;
-            }
-        }
-        &:hover{
-            display: block;
-        }
-    }
-    &__btn{
-        background-color: #4CAF50;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
+    &__login{
+        margin-left: auto; 
     }
     &__button{
-        text-align: right;
+        &-category{
+            margin-left: 5px ;
+        }
+    }
+    &__dropdown{
+            position: absolute;
+            background-color: #113946;
+            border-radius: 10px;
+            padding: 10px;
+            left: 0;
+
+        &-item{
+            border: 1px solid gray;
+            padding: 2px;
+            font-size: 20px;
+        }
+    }
+    &__search{
+        margin-top: 5px;
     }
 }

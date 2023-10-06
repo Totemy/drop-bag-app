@@ -2,18 +2,34 @@
     <div class="navbar">
         <div class="row">
             <div class="col">
-                <div class="navbar__dropdown">
-                    Category
-                    <div class="navbar__dropdown-content">
-                        <p>
-                            Hello
-                        </p>
+                <div class="navbar__button-category">
+                    <button
+                        @click="catOpen = !catOpen"
+                        class="btn btn-secondary dropdown-toggle"
+                        type="button"
+                    >
+                        Category
+                    </button>
+                    <div class="navbar__dropdown" v-if="catOpen">
+                        <div
+                            v-for="cat in Category"
+                            :key="cat.id"
+                        >
+                            <div class="navbar__dropdown-item">
+                                {{ cat.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="dropdown navbar__button">
-                    <button
+                <div class="navbar__search">
+                    <input type="text"  />
+                </div>
+            </div>
+            <div class="col">
+                <div class="dropdown navbar__login ">
+                    <button 
                         @click="isOpen = !isOpen"
                         class="btn btn-secondary dropdown-toggle"
                         type="button"
@@ -46,7 +62,8 @@ import {
     getFirestore,
     query,
     getDocs,
-    collectionGroup
+    collectionGroup,
+    collection
 } from "firebase/firestore";
 const db = getFirestore();
 export default {
@@ -58,7 +75,9 @@ export default {
             searchProduct: "",
             filteredProducts: [],
             Products: [],
-            isOpen: false
+            Category: [],
+            isOpen: false,
+            catOpen: false
         };
     },
     created() {
@@ -71,6 +90,7 @@ export default {
             }
         });
         this.getProducts();
+        this.getCategory();
     },
     methods: {
         logout() {
@@ -85,6 +105,20 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        async getCategory() {
+            const db = getFirestore(),
+                q = query(collection(db, "categories"));
+
+            const querySnapshot = await getDocs(q);
+            this.Category = [];
+            querySnapshot.forEach((doc) => {
+                this.Category.push({
+                id: doc.id,
+                name: doc.data().name,
+                image: doc.data().image,
+                });
+            });
         },
         async getProducts() {
             const sousCollectionRef = query(collectionGroup(db, `products`));
