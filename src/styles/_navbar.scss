@@ -5,8 +5,9 @@
     left: 0;
     top:0;
     color: white;
+    justify-content: space-between;
     &__login{
-        position: absolute;
+       // position: absolute;
         right: 36px;
         top: 50px;
         &-item{
@@ -19,8 +20,8 @@
             margin-left: 5px ;
         }
         &-login{
-            position: absolute;
-            right: 10px;
+            //position: absolute;
+            //right: 10px;
         }
         &-loginpage{
             width: 126px;
@@ -52,5 +53,7 @@
     &__search{
         margin-top: 5px;
         width: 100%;
+        flex: 1;
+        display: flex;
     }
 }

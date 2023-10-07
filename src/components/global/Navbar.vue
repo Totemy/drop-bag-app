@@ -25,45 +25,47 @@
                 </div>
             </div>
             <div class="col">
-                <button
-                    @click="isOpen = !isOpen"
-                    class="btn btn-secondary dropdown-toggle navbar__button-login"
-                    type="button"
-                >
-                    My Account
-                </button>
                 <div class="navbar__login">
-                    <ul v-if="isOpen" class="navbar__login-item">
-                        <div class="row">
-                            <button
-                                class="navbar__button-loginpage"
-                                to="/login"
-                                v-if="user == null"
-                            >
-                                Sign In
-                            </button>
-                            <button
-                                class="navbar__button-loginpage"
-                                v-if="user == null"
-                                to="/register"
-                            >
-                                Sign Up
-                            </button>
-                            <button
-                                class="navbar__button-loginpage"
-                                v-if="user"
-                                @click="logout()"
-                            >
-                                Sign Out
-                            </button>
-                            <button
-                                class="navbar__button-loginpage-admin"
-                                to="/dash"
-                            >
-                                Admin
-                            </button>
-                        </div>
-                    </ul>
+                    <button
+                        @click="isOpen = !isOpen"
+                        class="btn btn-secondary dropdown-toggle navbar__button-login"
+                        type="button"
+                    >
+                        My Account
+                    </button>
+                    <div class="">
+                        <ul v-if="isOpen" class="navbar__login-item">
+                            <div class="row">
+                                <button
+                                    class="navbar__button-loginpage"
+                                    to="/login"
+                                    v-if="user == null"
+                                >
+                                    Sign In
+                                </button>
+                                <button
+                                    class="navbar__button-loginpage"
+                                    v-if="user == null"
+                                    to="/register"
+                                >
+                                    Sign Up
+                                </button>
+                                <button
+                                    class="navbar__button-loginpage"
+                                    v-if="user"
+                                    @click="logout()"
+                                >
+                                    Sign Out
+                                </button>
+                                <button
+                                    class="navbar__button-loginpage-admin"
+                                    to="/dash"
+                                >
+                                    Admin
+                                </button>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
