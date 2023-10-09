@@ -1,59 +1,61 @@
-.navbar{
-    background-color: #113946;
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top:0;
-    color: white;
-    justify-content: space-between;
-    &__login{
-       // position: absolute;
-        right: 36px;
-        top: 50px;
-        &-item{
-            width: 100px;
-
-        }
-    }
-    &__button{
-        &-category{
-            margin-left: 5px ;
-        }
-        &-login{
-            //position: absolute;
-            //right: 10px;
-        }
-        &-loginpage{
-            width: 126px;
-            background-color: #113946;
-            padding: 5px;
-            color: white;
-            border: 1px solid white;
-            &-admin{
-                width: 126px;
-                padding: 5px;
-                background-color: red;
-                border: 1px solid white;
-            }
-        }
-    }
-    &__dropdown{
-            position: absolute;
-            background-color: #113946;
-            border-radius: 10px;
-            padding: 10px;
-            left: 0;
-
-        &-item{
-            border: 1px solid gray;
-            padding: 2px;
-            font-size: 20px;
-        }
-    }
-    &__search{
-        margin-top: 5px;
-        width: 100%;
-        flex: 1;
-        display: flex;
-    }
+.header {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	background-color: #113946;
+	// --------------------------------------
+	&__category {
+		position: relative;
+	}
+	&__category-btn {
+	}
+	&__category-dropdown {
+		position: absolute;
+		background-color: #113946;
+		padding-left: 10px;
+		top: 48px;
+	}
+	&__category-item {
+		min-width: 250px;
+		color: #fff;
+	}
+	// --------------------------------------
+	&__search {
+		width: 100%;
+		margin: 10px 10px;
+	}
+	&__search-input {
+		width: 100%;
+		border-radius: 5px;
+		height: 40px;
+	}
+	// --------------------------------------
+	&__trash-con {
+		width: 40px;
+		height: 40px;
+		margin-right: 10px;
+		flex-shrink: 0;
+	}
+	&__trash-btn {
+		width: 100%;
+		height: 100%;
+		background-color: gray;
+		border-radius: 5px;
+	}
+	// --------------------------------------
+	&__account {
+		position: relative;
+	}
+	&__account-btn {
+	}
+	&__account-dropdown {
+		position: absolute;
+		background-color: #113946;
+		top: 48px;
+	}
+	&__account-loginpage {
+		border: none;
+		background-color: #113946;
+		color: #fff;
+	}
 }

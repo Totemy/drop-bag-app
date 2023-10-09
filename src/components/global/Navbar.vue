@@ -1,73 +1,64 @@
 <template>
-    <div class="navbar">
-        <div class="row">
-            <div class="col">
-                <div class="">
-                    <button
-                        @click="catOpen = !catOpen"
-                        class="btn btn-secondary dropdown-toggle navbar__button-category"
-                        type="button"
-                    >
-                        Category
-                    </button>
-                    <div class="navbar__dropdown" v-if="catOpen">
-                        <div v-for="cat in Category" :key="cat.id">
-                            <div class="navbar__dropdown-item">
-                                {{ cat.name }}
-                            </div>
-                        </div>
+    <div class="header">
+        <div class="header__category">
+            <button
+                @click="catOpen = !catOpen"
+                class="header__category-btn btn btn-secondary dropdown-toggle navbar__button-login"
+                type="button"
+            >
+                Category
+            </button>
+            <div class="header__category-dropdown" v-if="catOpen">
+                <div v-for="cat in Category" :key="cat.id">
+                    <div class="header__category-item">
+                        {{ cat.name }}
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="navbar__search">
-                    <input type="text" />
-                </div>
-            </div>
-            <div class="col">
-                <div class="navbar__login">
-                    <button
-                        @click="isOpen = !isOpen"
-                        class="btn btn-secondary dropdown-toggle navbar__button-login"
-                        type="button"
-                    >
-                        My Account
-                    </button>
-                    <div class="">
-                        <ul v-if="isOpen" class="navbar__login-item">
-                            <div class="row">
-                                <button
-                                    class="navbar__button-loginpage"
-                                    to="/login"
-                                    v-if="user == null"
-                                >
-                                    Sign In
-                                </button>
-                                <button
-                                    class="navbar__button-loginpage"
-                                    v-if="user == null"
-                                    to="/register"
-                                >
-                                    Sign Up
-                                </button>
-                                <button
-                                    class="navbar__button-loginpage"
-                                    v-if="user"
-                                    @click="logout()"
-                                >
-                                    Sign Out
-                                </button>
-                                <button
-                                    class="navbar__button-loginpage-admin"
-                                    to="/dash"
-                                >
-                                    Admin
-                                </button>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        </div>
+
+        <div class="header__search">
+            <input type="text" class="header__search-input" placeholder="Lox" />
+        </div>
+
+        <div class="header__trash-con">
+            <div class="header__trash-btn"></div>
+        </div>
+
+        <div class="header__account">
+            <button
+                @click="isOpen = !isOpen"
+                class="header__account-btn btn btn-secondary dropdown-toggle navbar__button-login"
+                type="button"
+            >
+                My Account
+            </button>
+            <ul v-if="isOpen" class="header__account-dropdown">
+                <button
+                    class="header__account-loginpage"
+                    to="/login"
+                    v-if="user == null"
+                >
+                    Sign In
+                </button>
+                <button
+                    class="header__account-loginpage"
+                    v-if="user == null"
+                    to="/register"
+                >
+                    Sign Up
+                </button>
+                <button
+                    class="header__account-loginpage"
+                    v-if="user"
+                    @click="logout()"
+                >
+                    Sign Out
+                </button>
+                <button class="header__account-loginpage" to="/dash">
+                    Admin
+                </button>
+            </ul>
         </div>
     </div>
 </template>
