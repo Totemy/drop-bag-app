@@ -6,7 +6,7 @@
                 class="header__category-btn btn btn-secondary dropdown-toggle navbar__button-login"
                 type="button"
             >
-                Category
+                Категорії
             </button>
             <div class="header__category-dropdown" v-if="catOpen">
                 <div v-for="cat in Category" :key="cat.id">
@@ -18,7 +18,7 @@
         </div>
 
         <div class="header__search">
-            <input type="text" class="header__search-input" placeholder="Lox" />
+            <input type="text" class="header__search-input" placeholder="Я хочу знайти ..." />
         </div>
 
         <div class="header__trash-con">
