@@ -5,6 +5,49 @@
         <div>
             {{ Category.name }}
         </div>
+        <div>
+            <div class="row">
+                <div class="col-4" v-for="prod in Products" :key="prod.id">
+                    <div class="card"></div>
+                    <img class="card__img" :src="prod.picture[0]" />
+                    <div class="card__details">
+                        <button
+                            @click="
+                                addToCart({
+                                    id: prod.id,
+                                    name: prod.name,
+                                    price: prod.price,
+                                    picture: prod.picture,
+                                    qte: qte,
+                                })
+                            "
+                        >
+                            До кошика
+                        </button>
+                        <button
+                            :to="{
+                                name: 'Product',
+                                params: {
+                                    id: prod.id,
+                                    name: prod.name,
+                                    picture: prod.picture,
+                                    price: prod.price,
+                                    desc: prod.description,
+                                },
+                            }"
+                        >
+                            Відкрити
+                        </button>
+                        <div>
+                            <div>
+                                {{ prod.name }}
+                            </div>
+                            <div>{{ prod.price }} hrn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -30,7 +73,7 @@ export default {
         image: String,
         products: Object,
     },
-    created() {
+    mounted() {
         this.getCategory()
         this.getProducts()
     },
@@ -72,7 +115,7 @@ export default {
                     description: doc.data().description,
                     price: doc.data().price,
                     picture: doc.data().picture,
-                    url: doc.data().url
+                    url: doc.data().url,
                 })
             })
         },

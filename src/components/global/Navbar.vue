@@ -10,7 +10,7 @@
             </button>
             <div class="header__category-dropdown" v-if="catOpen">
                 <div v-for="cat in Category" :key="cat.id">
-                    <div class="header__category-item" @click="navigateToProfile(cat.id, cat.name)">
+                    <div class="header__category-item" @click="navigateToProfile(cat.id)">
                         {{ cat.name }}
                     </div>
                 </div>
@@ -151,6 +151,7 @@ export default {
         },
         navigateToProfile(categoryId) {
             this.$router.push({ name: 'CategoryPage', params: { categoryId } });
+            location.reload();
         },
     }
 };

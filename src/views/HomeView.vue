@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Navbar/>
+
     <div class="container">
     <CategorySec/>
     </div>
@@ -12,12 +12,12 @@
 // @ is an alias to /src
 import CategorySec from "@/components/CategorySec.vue";
 //import OfferSec from "@/components/Offer.vue";
-import Navbar from "@/components/global/Navbar.vue"
+
 export default {
   name: 'HomeView',
   components: {
     CategorySec,
-    Navbar
+
     //OfferSec
   },
   
