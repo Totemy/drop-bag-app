@@ -90,7 +90,6 @@ export default {
                 var categoryData =  JSON.parse(JSON.stringify(this.categories));
                 parser.parseString(data, function (err, result) {
                     var obj = result.yml_catalog;
-                    console.log(obj.shop[0].offers[0].offer)
                     for (k in obj.shop[0].offers[0].offer) {
                         var item = obj.shop[0].offers[0].offer[k];
                         arr.push({
