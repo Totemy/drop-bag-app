@@ -10,7 +10,7 @@
             </button>
             <div class="header__category-dropdown" v-if="catOpen">
                 <div v-for="cat in Category" :key="cat.id">
-                    <div class="header__category-item" @click="navigateToProfile(cat.id)">
+                    <div class="header__category-item" @click="navigateToProfile(cat.id, cat.name)">
                         {{ cat.name }}
                     </div>
                 </div>
