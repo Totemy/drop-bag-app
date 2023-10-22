@@ -27,8 +27,8 @@ const routes = [
     component: () => import("../components/global/Navbar.vue"),
   },
   {
-    path: "/:categoryId",
-    name: "CategoryPage",
+    path: '/category/:categoryId',
+    name: 'CategoryPage',
     component: () => import ("../components/CategoryPage.vue")
   },
   {
