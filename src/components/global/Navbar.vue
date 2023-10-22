@@ -1,5 +1,13 @@
 <template>
     <div class="header">
+        <div class="header__logo">
+            <button @click="routeToMainPage()"
+                class="header__category-btn btn btn-secondary navbar__button-login"
+                type="button"
+            >
+                Shop
+            </button>
+        </div>
         <div class="header__category">
             <button
                 @click="catOpen = !catOpen"
@@ -63,6 +71,7 @@
     </div>
 </template>
 <script>
+import CategoryPage from "@/components/CategoryPage.vue"
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import router from "../../router";
 import {
@@ -98,6 +107,15 @@ export default {
         });
         this.getProducts();
         this.getCategory();
+
+        this.Category.forEach(Category => {
+            this.$router.addRoute({
+                path: `/category/${Category.id}`,
+                name: 'CategoryPage',
+                component: CategoryPage,
+                meta: { categoryId: Category.id },
+            });
+        });
     },
     methods: {
         logout() {
@@ -151,7 +169,10 @@ export default {
         },
         navigateToProfile(categoryId) {
             this.$router.push({ name: 'CategoryPage', params: { categoryId } });
-            location.reload();
+ 
+        },
+        routeToMainPage() {
+            this.$router.push('/');
         },
     }
 };

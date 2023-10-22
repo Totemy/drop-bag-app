@@ -19,7 +19,38 @@
     }
     &__image{
         height: 100%;
+        width: 100%;
+        //top:0px;
+        z-index: -1;
+    }
+}
+.category-page{
+    position: relative;
+    &__card{
+        display: block;
+        border-radius: 2px;
+        border: 1px solid #8EACCD;
+        margin: 10px 0px 5px 0px;
+        width: 350px;
+        height: 350px; 
+        background-color: white;
+        overflow: hidden; 
+    }
+    &__text{
+        font-size: 20px;
+        color: black;
+        font-weight: 700;
+        text-align: center;
+        margin: 10px;
+    }
+    &__image{
+        text-align: center;
+        height: 50%;
         top:0px;
         z-index: -1;
+    }
+    &__header-image{
+        width: 100%;
+        
     }
 }

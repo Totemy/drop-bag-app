@@ -5,6 +5,10 @@
 	background-color: #113946;
 	padding-bottom: 10px;
 	// --------------------------------------
+	&__logo{
+		position: relative;
+		margin-right: 5px;
+	}
 	&__category {
 		position: relative;
 	}

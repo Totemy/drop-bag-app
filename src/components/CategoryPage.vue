@@ -1,49 +1,52 @@
 <template>
-    <div>
+    <div class="container category-page">
         <h2>{{ name }}</h2>
-        <img class="category__image" :src="Category.image" />
+        <img class="category-page__header-image" :src="Category.image" />
         <div>
             {{ Category.name }}
         </div>
         <div>
             <div class="row">
-                <div class="col-4" v-for="prod in Products" :key="prod.id">
-                    <div class="card"></div>
-                    <img class="card__img" :src="prod.picture[0]" />
-                    <div class="card__details">
-                        <button
-                            @click="
-                                addToCart({
-                                    id: prod.id,
-                                    name: prod.name,
-                                    price: prod.price,
-                                    picture: prod.picture,
-                                    qte: qte,
-                                })
-                            "
-                        >
-                            До кошика
-                        </button>
-                        <button
-                            :to="{
-                                name: 'Product',
-                                params: {
-                                    id: prod.id,
-                                    name: prod.name,
-                                    picture: prod.picture,
-                                    price: prod.price,
-                                    desc: prod.description,
-                                },
-                            }"
-                        >
-                            Відкрити
-                        </button>
-                        <div>
-                            <div>
-                                {{ prod.name }}
+                    <div class="col-4" v-for="prod in Products" :key="prod.id">
+                        <div class="category-page__card">
+                            <p class="category-page__text">{{ prod.name[0] }}</p>
+                            <img
+                                class="category-page__image"
+                                :src="prod.picture[0]"
+                            />
+                            <div class="category-page_buttons">
+                                <button class="btn btn-primary"
+                                    @click="
+                                        addToCart({
+                                            id: prod.id,
+                                            name: prod.name,
+                                            price: prod.price,
+                                            picture: prod.picture,
+                                            qte: qte,
+                                        })
+                                    "
+                                >
+                                    До кошика
+                                </button>
+                                <button class="btn btn-primary"
+                                    :to="{
+                                        name: 'Product',
+                                        params: {
+                                            id: prod.id,
+                                            name: prod.name,
+                                            picture: prod.picture,
+                                            price: prod.price,
+                                            desc: prod.description,
+                                        },
+                                    }"
+                                >
+                                    Відкрити
+                                </button>
+                                <div class="category__prod">
+                                    <div>{{ prod.price }} hrn</div>
+                                </div>
                             </div>
-                            <div>{{ prod.price }} hrn</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -83,7 +86,7 @@ export default {
             const categoryRef = doc(db, 'categories', this.categoryId)
 
             const docSnap = await getDoc(categoryRef)
-
+            
             if (docSnap.exists()) {
                 this.Category = {
                     id: docSnap.id,
