@@ -90,6 +90,11 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
+  if (to.name === 'CategoryPage' && from.name === 'CategoryPage' && to.params.categoryId !== from.params.categoryId) {
+    window.location.reload();
+  } else {
+    next();
+  }
 });
 
 export default router

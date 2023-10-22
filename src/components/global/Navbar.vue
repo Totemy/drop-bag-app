@@ -168,14 +168,15 @@ export default {
             this.$root.$emit("filtered-Products", this.filteredProducts);
         },
         navigateToCategory(categoryId) {
+
                 this.$router.push({ name: 'CategoryPage', params: { categoryId } });
-                location.reload();
         },
         routeToMainPage() {
             if (this.$route.path !== "/") {
-                this.$router.push("/");
+                this.$router.replace("/");
             }
         },
-    }
+    },
+    
 };
 </script>
