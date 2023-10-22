@@ -29,16 +29,7 @@
                                     До кошика
                                 </button>
                                 <button class="btn btn-primary"
-                                    :to="{
-                                        name: 'Product',
-                                        params: {
-                                            id: prod.id,
-                                            name: prod.name,
-                                            picture: prod.picture,
-                                            price: prod.price,
-                                            desc: prod.description,
-                                        },
-                                    }"
+                                   @click="navigateToProduct(prod.id)"
                                 >
                                     Відкрити
                                 </button>
@@ -79,6 +70,14 @@ export default {
     mounted() {
         this.getCategory()
         this.getProducts()
+        this.Products.forEach(Products => {
+            this.$router.addRoute({
+                path: `/category/${Products.id}`,
+                name: 'ProductsPage',
+                component: Products,
+                meta: { productId: Products.id },
+            });
+        });
     },
     methods: {
         async getCategory() {
@@ -122,6 +121,9 @@ export default {
                 })
             })
         },
+        navigateToProduct(productId){
+            this.$router.push({ name: 'ProductPage', params: { productId} });
+        }
     },
 }
 </script>

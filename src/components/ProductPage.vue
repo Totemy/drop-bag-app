@@ -1,6 +1,6 @@
 <template>
     <div class="product">
-        <div><button>Go back</button></div>
+        <div><button @click="goBack()">Go back</button></div>
         <div>
             <h2>{{ name }}</h2>
             <div>
@@ -21,5 +21,10 @@ export default {
         image: String,
         price: String
     },
+    methods:{
+        goBack() {
+            this.$router.go(-1);
+        }
+    }
 };
 </script>

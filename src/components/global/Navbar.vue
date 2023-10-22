@@ -13,6 +13,7 @@
                 @click="catOpen = !catOpen"
                 class="header__category-btn btn btn-secondary dropdown-toggle navbar__button-login"
                 type="button"
+                ref="categoryDropdown"
             >
                 Категорії
             </button>
