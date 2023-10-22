@@ -35,10 +35,7 @@ const routes = [
     path: '/product/:productId',
     name: 'ProductPage',
     component: () => import ("../components/ProductPage.vue"),
-    props: route => ({
-      productId: route.params.productId,
-      product: JSON.parse(route.query.product),
-    }),
+
   },
   {
     path: "/Dash",
