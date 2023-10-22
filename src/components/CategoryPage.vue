@@ -29,7 +29,7 @@
                                     До кошика
                                 </button>
                                 <button class="btn btn-primary"
-                                   @click="navigateToProduct(prod.id)"
+                                   @click="navigateToProduct(prod)"
                                 >
                                     Відкрити
                                 </button>
@@ -121,8 +121,8 @@ export default {
                 })
             })
         },
-        navigateToProduct(productId){
-            this.$router.push({ name: 'ProductPage', params: { productId} });
+        navigateToProduct(product){
+            this.$router.push({ name: 'ProductPage', params: { productId: product.id }, query: { product: JSON.stringify(product) }, });
         }
     },
 }

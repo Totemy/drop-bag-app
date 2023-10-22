@@ -2,12 +2,11 @@
     <div class="product">
         <div><button @click="goBack()">Go back</button></div>
         <div>
-            <h2>{{ name }}</h2>
+            <h2>{{ product.name }}</h2>
             <div>
-                {{ description }}
+                {{ product.description }}
             </div>
             <div>
-                <p>{{ price }} Грн</p>
                 <button>Додати до кошика</button>
             </div>
         </div>
@@ -16,15 +15,13 @@
 <script>
 export default {
     props: {
-        name: String,
-        description: String,
-        image: String,
-        price: String
+        productId: String,
+        product: Object,
     },
-    methods:{
+    methods: {
         goBack() {
-            this.$router.go(-1);
-        }
-    }
-};
+            this.$router.go(-1)
+        },
+    },
+}
 </script>
