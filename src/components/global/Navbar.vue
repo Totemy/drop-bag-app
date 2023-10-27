@@ -5,7 +5,7 @@
                 class="header__category-btn btn btn-secondary navbar__button-login"
                 type="button"
             >
-                Shop
+                Головна
             </button>
         </div>
         <div class="header__category">
@@ -171,6 +171,7 @@ export default {
         navigateToCategory(categoryId) {
 
                 this.$router.push({ name: 'CategoryPage', params: { categoryId } });
+                this.catOpen = false; 
         },
         routeToMainPage() {
             if (this.$route.path !== "/") {

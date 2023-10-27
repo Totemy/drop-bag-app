@@ -25,7 +25,7 @@
                                             qte: qte,
                                         })
                                     "
-                                >
+                                > 
                                     До кошика
                                 </button>
                                 <button class="btn btn-primary"
@@ -33,11 +33,15 @@
                                 >
                                     Відкрити
                                 </button>
+                                <div>
+                                    <div>34</div>
+                                    <div>34</div>
+                                    <div>34</div>
+                                </div>
                                 <div class="category__prod">
                                     <div>{{ prod.price }} hrn</div>
                                 </div>
                             </div>
-
                     </div>
                 </div>
             </div>

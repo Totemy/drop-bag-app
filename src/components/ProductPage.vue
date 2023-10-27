@@ -1,14 +1,26 @@
 <template>
     <div class="product">
-        <div><button @click="goBack()">Go back</button></div>
-        <div>
-            {{  product.name[0]}}
-        </div>
-        <div>
-            <div>
-                <button>Додати до кошика</button>
+        <div class="row">
+            <div class="col-8">
+                <div><button @click="goBack()">Go back</button></div>
+                <div>
+                    <h2>{{  product.name[0]}}</h2>
+                </div>
+                <h3>Опис : </h3>
+                <div v-html="product.description[0]">
+
+                </div>
+                <div>
+                    <div>
+                        <button>Додати до кошика</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                Купити
             </div>
         </div>
+        
     </div>
 </template>
 <script>
