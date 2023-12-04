@@ -48,7 +48,6 @@ export default {
     async getCategory() {
       const db = getFirestore(),
         q = query(collection(db, "categories"));
-
       const querySnapshot = await getDocs(q);
       this.Category = [];
       querySnapshot.forEach((doc) => {

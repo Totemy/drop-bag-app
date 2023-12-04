@@ -1,6 +1,7 @@
 [
     {
       "name": "Зимові чоботи",
+      "id": "23",
       "description": "Опис де </br> це абзац ",
       "images": ["photo1.jpg","photo2.jpg","https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg"],
       "links": ["https://www.oplata.info/asp2/pay_wm.asp?id_d=2664985&ai=861111"],
@@ -10,6 +11,7 @@
     },
     {
         "name": "Назва товару",
+        "id": "22",
         "description": "Опис де </br> це абзац ",
         "images": ["photo1.jpg","photo2.jpg","https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_640.jpg"],
         "links": ["https://www.oplata.info/asp2/pay_wm.asp?id_d=2664985&ai=861111"],
