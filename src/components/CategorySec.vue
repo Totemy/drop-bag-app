@@ -11,19 +11,38 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-4"  v-for="local in localData" :key="local.id">
+                <div class="" >
+                  <div class="category__card" @click="navigateToCategory(local.id)">
+                    <p class="category__text">{{ local.name }}</p>
+                    <img class="category__image" :src="local.image" />
+                  </div>
+                </div>
+            </div>
+        </div>
       </div>
 </template>
 <script>
 import { collection, getFirestore, query, getDocs } from "firebase/firestore";
+import { DataService, EventBus } from '../services/DataService';
+
 export default {
   name: "CategSec",
   data() {
     return {
       Category: [],
+      localData: [],
     };
   },
   created() {
     this.getCategory();
+    this.localData = DataService.data;
+
+    // Listen for changes in data
+    EventBus.$on('data-updated', (newData) => {
+      this.localData = newData;
+    });
   },
   methods: {
     async getCategory() {

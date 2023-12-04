@@ -4,10 +4,10 @@
             <div class="col-8">
                 <div><button @click="goBack()">Go back</button></div>
                 <div>
-                    <h2>{{  product.name[0]}}</h2>
+                    <h2>{{  product.name}}</h2>
                 </div>
                 <h3>Опис : </h3>
-                <div v-html="product.description[0]">
+                <div v-html="product.description">
 
                 </div>
                 <div>
