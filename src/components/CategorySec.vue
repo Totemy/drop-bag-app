@@ -25,24 +25,17 @@
 </template>
 <script>
 import { collection, getFirestore, query, getDocs } from "firebase/firestore";
-import { DataService, EventBus } from '../services/DataService';
+
 
 export default {
   name: "CategSec",
   data() {
     return {
       Category: [],
-      localData: [],
     };
   },
   created() {
     this.getCategory();
-    this.localData = DataService.data;
-
-    // Listen for changes in data
-    EventBus.$on('data-updated', (newData) => {
-      this.localData = newData;
-    });
   },
   methods: {
     async getCategory() {
