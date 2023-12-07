@@ -2,7 +2,8 @@
   <div class="home">
 
     <div class="container">
-    <CategorySec/>
+      <ProductsSecLocal/>
+      <CategorySec/>
     </div>
 
   </div>
@@ -11,13 +12,14 @@
 <script>
 // @ is an alias to /src
 import CategorySec from "@/components/CategorySec.vue";
+import ProductsSecLocal from "@/components/local/ProductsSecLocal.vue";
 //import OfferSec from "@/components/Offer.vue";
 
 export default {
   name: 'HomeView',
   components: {
     CategorySec,
-
+    ProductsSecLocal
     //OfferSec
   },
   
