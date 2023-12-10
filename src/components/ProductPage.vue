@@ -30,16 +30,21 @@ import {
     collectionGroup,
     getFirestore,
 } from 'firebase/firestore'
+import { DataService, EventBus } from '../services/DataService';
 export default {
     data() {
         return {
             Products: [],
             product: null, // Data property to store the found product
-            productIdToFind: this.$route.params.productId
+            productIdToFind: this.$route.params.productId,
+            localData:[],
+            localProduct: null
         };
     },
     created() {
-        this.getProducts()        
+        this.getLocalData()
+        
+        
     },
     methods: {
         goBack() {
@@ -61,6 +66,14 @@ export default {
             })
             this.product = this.Products.find(product => product.id === this.productIdToFind);
         },
+        async getLocalData(){
+            let localData = DataService.data;
+                EventBus.$on('data-updated', (newData) => {
+                    this.localData = newData;
+                });
+            
+            this.product = localData.find(product => product.id == this.productIdToFind);
+        }
     },
 }
 </script>

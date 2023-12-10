@@ -20,16 +20,7 @@
                                 <p class="catalog-price">{{ product.price }}</p>
                             </div>
                             <button type="button" class="catalog-btn" 
-                            :to="{
-                                name:'Product',
-                                params:{
-                                    id:product.id,
-                                    name:product.name,
-                                    image:product.images,
-                                    price:product.price,
-                                    desc: product.description,
-                                }
-                            }"
+                            @click="navigateToProduct(product.id)"
                             >
                                 Buy
                             </button>
@@ -42,7 +33,7 @@
     </div>
 </template>
 <script>
-import { DataService, EventBus } from '../../services/DataService';
+import { DataService, EventBus } from '@/services/DataService';
 export default {
     data(){
         return{
@@ -54,6 +45,11 @@ export default {
         EventBus.$on('data-updated', (newData) => {
             this.localData = newData;
         });
+    },
+    methods:{
+        navigateToProduct(productId){
+            this.$router.push({ name: 'ProductPage', params: { productId } });
+        }
     }
 }
 </script>

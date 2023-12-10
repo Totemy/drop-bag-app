@@ -27,7 +27,7 @@
                   desc: prod.description,
                 },
               }">
-                Відкрити
+                Відsssкрити
               </button>
               <div >
                 <div>
