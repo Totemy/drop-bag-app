@@ -8,7 +8,6 @@
                 </div>
                 <h3>Опис : </h3>
                 <div v-html="product.description">
-
                 </div>
                 <div>
                     <div>
@@ -16,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-4" @click="addToCart(product)">
                 Купити
             </div>
         </div>
@@ -32,6 +31,7 @@ import {
 } from 'firebase/firestore'
 import { DataService, EventBus } from '../services/DataService';
 export default {
+    
     data() {
         return {
             Products: [],
@@ -73,7 +73,10 @@ export default {
                 });
             
             this.product = localData.find(product => product.id == this.productIdToFind);
-        }
+        },
+        addToCart(product) {
+            this.$store.dispatch('cart/addToCart', product);
+        },
     },
 }
 </script>
