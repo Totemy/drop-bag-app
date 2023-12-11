@@ -39,10 +39,12 @@
         </div>
 
         <div class="header__trash-con">
-            <div class="header__trash-btn"></div>
+            <div class="header__trash-btn">
+                <img src="/images/navbar/basket_icon.svg"/>
+            </div>
         </div>
 
-        <div class="header__account">
+        <!--<div class="header__account">
             <button
                 @click="isOpen = !isOpen"
                 class="header__account-btn btn btn-secondary dropdown-toggle navbar__button-login"
@@ -76,7 +78,7 @@
                     Admin
                 </button>
             </ul>
-        </div>
+        </div>-->
     </div>
 </template>
 <script>
