@@ -19,7 +19,6 @@
                 Купити
             </div>
         </div>
-        
     </div>
 </template>
 <script>
@@ -30,6 +29,7 @@ import {
     getFirestore,
 } from 'firebase/firestore'
 import { DataService, EventBus } from '../services/DataService';
+import { mapGetters } from 'vuex';
 export default {
     
     data() {
@@ -46,6 +46,9 @@ export default {
         
         
     },
+    computed: {
+    ...mapGetters('cart', ['cartItems']),
+  },
     methods: {
         goBack() {
             this.$router.go(-1)

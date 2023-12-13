@@ -39,11 +39,12 @@
         </div>
 
         <div class="header__trash-con">
-            <div class="header__trash-btn">
+            <button class="header__trash-btn" @click="toggleCart" >
                 <img src="/images/navbar/basket_icon.svg"/>
-            </div>
+            </button>
+          
         </div>
-
+        <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
         <!--<div class="header__account">
             <button
                 @click="isOpen = !isOpen"
@@ -85,6 +86,8 @@
 import CategoryPage from '@/components/CategoryPage.vue'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import router from '../../router'
+import { mapState, mapMutations } from 'vuex';
+import Cart from '../../views/CartComponent.vue'
 import {
     getFirestore,
     query,
@@ -96,6 +99,9 @@ const db = getFirestore()
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'navbar',
+    components: {
+        Cart,
+    },
     data() {
         return {
             user: null,
@@ -108,6 +114,10 @@ export default {
             isAdmin: false,
         }
     },
+    computed: {
+    ...mapState('cart', ['cartItems', 'isOpen']),
+    },
+
     created() {
         const auth = getAuth()
         console.log(this.isAdmin)
@@ -143,6 +153,7 @@ export default {
         })
     },
     methods: {
+        ...mapMutations('cart', ['toggleCart']),
         logout() {
             this.isAdmin = false;
             console.log(this.isAdmin)

@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import cart from './cart';
+import cartModule from './cart';
 
 Vue.use(Vuex);
 
@@ -9,5 +9,5 @@ export default new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {},
-  modules: {cart},
+  modules: {cart: cartModule,},
 });
