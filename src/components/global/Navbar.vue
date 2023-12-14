@@ -3,7 +3,7 @@
         <div class="header__logo">
             <button
                 @click="routeToMainPage()"
-                class="header__category-btn btn btn-secondary navbar__button-login"
+                class="btn btn__navbar"
                 type="button"
             >
                 Головна
@@ -12,7 +12,7 @@
         <div class="header__category">
             <button
                 @click="catOpen = !catOpen"
-                class="header__category-btn btn btn-secondary dropdown-toggle navbar__button-login"
+                class="btn btn__navbar dropdown-toggle "
                 type="button"
                 ref="categoryDropdown"
             >
@@ -29,7 +29,6 @@
                 </div>
             </div>
         </div>
-
         <div class="header__search">
             <input
                 type="text"
@@ -37,12 +36,10 @@
                 placeholder="Я хочу знайти ..."
             />
         </div>
-
         <div class="header__trash-con">
-            <button class="header__trash-btn" @click="toggleCart" >
+            <button class="btn btn__cart" @click="toggleCart" >
                 <img src="/images/navbar/basket_icon.svg"/>
             </button>
-          
         </div>
         <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
         <!--<div class="header__account">

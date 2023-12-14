@@ -2,9 +2,8 @@
 	display: flex;
 	align-items: center;
 	padding: 0 10px;
-	background-color: #113946;
+	background-color: $second-color;
 	padding-bottom: 10px;
-	// --------------------------------------
 	&__logo{
 		position: relative;
 		margin-right: 5px;
@@ -16,7 +15,7 @@
 	}
 	&__category-dropdown {
 		position: absolute;
-		background-color: #113946;
+		background-color: $third-color;
 		padding-left: 10px;
 		top: 48px;
 	}
@@ -24,7 +23,6 @@
 		min-width: 250px;
 		color: #fff;
 	}
-	// --------------------------------------
 	&__search {
 		width: 100%;
 		margin: 10px 10px;
@@ -34,21 +32,12 @@
 		border-radius: 5px;
 		height: 40px;
 	}
-	// --------------------------------------
 	&__trash-con {
 		width: 40px;
 		height: 40px;
 		margin-right: 10px;
 		flex-shrink: 0;
 	}
-	&__trash-btn {
-		width: 100%;
-		height: 100%;
-		background-color: gray;
-		border-radius: 5px;
-		padding: 2px;
-	}
-	// --------------------------------------
 	&__account {
 		position: relative;
 	}
@@ -56,12 +45,12 @@
 	}
 	&__account-dropdown {
 		position: absolute;
-		background-color: #113946;
+		background-color: $third-color;
 		top: 48px;
 	}
 	&__account-loginpage {
 		border: none;
-		background-color: #113946;
+		background-color: $third-color;
 		color: #fff;
 	}
 }

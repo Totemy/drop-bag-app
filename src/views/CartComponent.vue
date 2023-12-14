@@ -11,8 +11,10 @@
         </ul>
       </div>
     </div>
-    <button @click="closeCart">Close</button>
-    <button @click="clearCart">Очистити корзину</button>
+    <div class="cart-count__buttons">
+      <button class="btn btn__close" @click="closeCart">Закрити</button>
+      <button class="btn btn__clear" @click="clearCart">Очистити корзину</button>
+    </div>
   </div>
 </template>
 <script>

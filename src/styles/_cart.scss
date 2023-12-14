@@ -6,11 +6,14 @@
     right: 0px;
     width:fit-content;
     background-color: $main-color;
-    border-radius: 5px;
+    border-radius: 0px 0px 0px 15px;
     &__article{
         
     }
     &__list{
-        
+
+    }
+    &__buttons{
+        padding: 20px 0px;
     }
 }
