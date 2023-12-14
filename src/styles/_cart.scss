@@ -1,12 +1,16 @@
 .cart-count{
-    margin: 150px 10px 0px 0px;
-    padding: 0px 2px 0px 5px;
+    
+    padding: 0px 25px 0px 25px;
     position: absolute;
+    top: 70px;
     right: 0px;
     width:fit-content;
-    background-color: aquamarine;
-    
+    background-color: $main-color;
+    border-radius: 5px;
     &__article{
+        
+    }
+    &__list{
         
     }
 }

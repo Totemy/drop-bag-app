@@ -11,11 +11,11 @@
                 </div>
                 <div>
                     <div>
-                        <button>Додати до кошика</button>
+                        <button @click="addToCart(product)">Додати до кошика</button>
                     </div>
                 </div>
             </div>
-            <div class="col-4" @click="addToCart(product)">
+            <div class="col-4" >
                 Купити
             </div>
         </div>

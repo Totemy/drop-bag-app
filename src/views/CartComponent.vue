@@ -6,6 +6,7 @@
         <ul v-for="(item, index) in cartItems" :key="index">
           <li>
             {{ index + 1 }} - {{ item.name }}
+            <button>X</button>
           </li>
         </ul>
       </div>
