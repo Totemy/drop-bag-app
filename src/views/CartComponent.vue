@@ -14,6 +14,8 @@
     <div class="cart-count__buttons">
       <button class="btn btn__close" @click="closeCart">Закрити</button>
       <button class="btn btn__clear" @click="clearCart">Очистити корзину</button>
+      <router-link to="/checkout"><button class="btn btn__offer">Оформити замовлення</button></router-link>
+      
     </div>
   </div>
 </template>

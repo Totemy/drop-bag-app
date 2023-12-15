@@ -1,5 +1,6 @@
 .btn{
     padding: 5px;
+    margin: 5px;
     border-radius: 5px;
     border: 1px solid $second-color;
     &:hover{
@@ -9,10 +10,10 @@
         background-color: $second-color;
     }
     &__clear{
-        margin-left: 5px;
+        
     }
     &__close{
-        margin: 5px;
+        
     }
     &__navbar{
         background-color: $third-color;

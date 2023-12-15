@@ -38,6 +38,11 @@ const routes = [
 
   },
   {
+    path: '/checkout',
+    name: 'Checkout',
+    component: ()=>import ("../components/CheckoutPage.vue"),
+  },
+  {
     path: "/Dash",
     name: "Dash",
     component: () => import("../views/admin/Dashboard.vue"),
