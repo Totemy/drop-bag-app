@@ -1,5 +1,7 @@
 .category{
     margin-top: 60px;
+    background-color: $main-color;
+    padding: 20px;
     &__card{
         display: block;
         border-radius: 2px;
@@ -26,6 +28,7 @@
 }
 .category-page{
     position: relative;
+
     &__card{
         display: block;
         border-radius: 2px;

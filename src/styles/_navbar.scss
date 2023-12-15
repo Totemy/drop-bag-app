@@ -15,8 +15,9 @@
 	}
 	&__category-dropdown {
 		position: absolute;
-		background-color: $third-color;
+		background-color: $second-color;
 		padding-left: 10px;
+		border-radius: 0px 0px 10px 10px ;
 		top: 48px;
 	}
 	&__category-item {

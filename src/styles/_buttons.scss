@@ -9,7 +9,10 @@
         background-color: $second-color;
     }
     &__clear{
-        
+        margin-left: 5px;
+    }
+    &__close{
+        margin: 5px;
     }
     &__navbar{
         background-color: $third-color;
