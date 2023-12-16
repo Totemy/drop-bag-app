@@ -5,8 +5,11 @@
     top: 70px;
     right: 0px;
     width:fit-content;
-    background-color: $main-color;
+    background-color: $third-color;
     border-radius: 0px 0px 0px 15px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    border-color: $second-color;
     &__article{
         
     }

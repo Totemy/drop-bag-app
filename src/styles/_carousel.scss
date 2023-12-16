@@ -1,0 +1,15 @@
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    &:active{
+        transform: translateX(0);
+    }
+    &__img{
+        width: 100%;
+        transition: transform 0.5s ease;
+        &:not(.active){
+            transform: translateX(-100%);
+        }
+    }
+  }
