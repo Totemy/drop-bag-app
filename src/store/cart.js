@@ -6,7 +6,6 @@ export default {
     },
     mutations: {
       ADD_TO_CART(state, product) {
-        // Modify the state to add the product to the cart
         state.cartItems.push(product);
       },
       toggleCart(state) {
@@ -18,13 +17,15 @@ export default {
       clearCart(state) {
         state.cartItems = [];
       },
+      removeFromCart(state, index) {
+        state.cartItems.splice(index, 1);
+      },
     },
     getters: {
       cartItems: state => state.cartItems,
     },
     actions: {
       addToCart({ commit }, product) {
-        // Perform necessary actions, e.g., committing a mutation
         commit('ADD_TO_CART', product);
       },
     }

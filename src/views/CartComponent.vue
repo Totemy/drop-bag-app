@@ -6,7 +6,7 @@
         <ul v-for="(item, index) in cartItems" :key="index">
           <li>
             {{ index + 1 }} - {{ item.name }}
-            <button>X</button>
+            <button class="btn btn__delete" @click="removeFromCart(index)">X</button>
           </li>
         </ul>
       </div>
@@ -14,7 +14,7 @@
     <div class="cart-count__buttons">
       <button class="btn btn__close" @click="closeCart">Закрити</button>
       <button class="btn btn__clear" @click="clearCart">Очистити корзину</button>
-      <router-link to="/checkout"><button class="btn btn__offer">Оформити замовлення</button></router-link>
+      <router-link to="/checkout"><button class="btn btn__offer" >Оформити замовлення</button></router-link>
       
     </div>
   </div>
@@ -34,7 +34,10 @@ export default{
     },
     clearCart(){
       this.$store.commit('cart/clearCart');
-    }
+    },
+    removeFromCart(index) {
+      this.$store.commit('cart/removeFromCart', index);
+    },
   },
 }
 </script>
