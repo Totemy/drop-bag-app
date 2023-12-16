@@ -1,11 +1,11 @@
 <template>
-    <div class="payment container">
+    <div class="checkout container">
         <div>
             <h2>Оформлення замовлення</h2>
-            <div class="payment__personal">
+            <div class="checkout__personal">
                 <h4>Ваші контактні дані</h4>
-                <input type="text" aria-placeholder="Ім'я" />
-                <input type="text" aria-placeholder="Прізвище" />
+                <input class="checkout__input" type="text" placeholder="Ім'я" />
+                <input class="checkout__input" type="text" placeholder="Прізвище" />
 
             </div>
         </div>
