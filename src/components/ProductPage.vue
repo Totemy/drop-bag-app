@@ -14,8 +14,9 @@
                     <carousel
                         :images="product.images"
                         :currentIndex="currentImageIndex"
+                        @nextImage="nextImage"
+                        @prevImage="prevImage"
                     />
-                    <img :src="product.image" />
                 </div>
                 <h3>Опис :</h3>
                 <div
@@ -121,14 +122,12 @@ export default {
             this.$store.dispatch('cart/addToCart', product)
         },
         nextImage() {
-            this.currentImageIndex =
-                (this.currentImageIndex + 1) % this.productImages.length
+            this.currentImageIndex = (this.currentImageIndex + 1) % this.productImages.length;
         },
         prevImage() {
-            this.currentImageIndex =
-                (this.currentImageIndex - 1 + this.productImages.length) %
-                this.productImages.length
+            this.currentImageIndex = (this.currentImageIndex - 1 + this.productImages.length) % this.productImages.length;
         },
+        
     },
 }
 </script>
