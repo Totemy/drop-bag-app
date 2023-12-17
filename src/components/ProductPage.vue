@@ -29,16 +29,27 @@
                     <h4>Купити</h4>
                     <div class="row">
                         <div class="col">
-                            {{ product.colors }}
+                            <div class="product__size">
+                                <h5>Колір</h5>
+                                <label v-for="color in product.colors" :key="color">
+                                    <input type="radio" :value="color" v-model="selectedColor">
+                                        {{ color }}
+                                </label>
+                            </div>
                         </div>
                         <div class="col">
-                            {{ product.sizes }}
-                        </div>
-                        <div class="col">
-                            {{ product.price }}
+                            <div class="product__size">
+                                <h5>Розмір</h5>
+                                <label v-for="size in product.sizes" :key="size">
+                                    <input type="radio" :value="size" v-model="selectedSize">
+                                        {{ size }}
+                                </label>
+                            </div>
+                            
                         </div>
                         <div>
                             <div>
+                                {{ product.price }}
                                 <button
                                     class="btn btn__addtocart"
                                     @click="addToCart(product)"
@@ -70,11 +81,13 @@ export default {
     data() {
         return {
             Products: [],
-            product: null, // Data property to store the found product
+            product: null,
             productIdToFind: this.$route.params.productId,
             localData: [],
             localProduct: null,
             currentImageIndex: 0,
+            selectedSize: null,
+            selectedColor: null,
         }
     },
     created() {
@@ -85,6 +98,9 @@ export default {
         productImages() {
             return this.product.images || []
         },
+        sizeValues() {
+            return this.product.sizes.map(size => String(size));
+        }
     },
     methods: {
         goBack() {
@@ -119,7 +135,7 @@ export default {
             )
         },
         addToCart(product) {
-            this.$store.dispatch('cart/addToCart', product)
+            this.$store.dispatch('cart/addToCart',  {name: product.name, size: this.selectedSize, color: this.selectedColor, price: product.price, images: product.images } );
         },
         nextImage() {
             this.currentImageIndex = (this.currentImageIndex + 1) % this.productImages.length;

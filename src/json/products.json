@@ -8,7 +8,7 @@
       "links": ["https://www.oplata.info/asp2/pay_wm.asp?id_d=2664985&ai=861111"],
       "price": "250грн",
       "sizes": ["45","44","43","42"],
-      "colors": ["чоний","червоний"]
+      "colors": ["black","red"]
     },
     {
         "name": "Назва товару",
