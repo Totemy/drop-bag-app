@@ -1,0 +1,9 @@
+.footer{
+    background-color: $second-color;
+    color: $main-color;
+    text-align: center;
+    width: 100%;
+    &__articles{
+        padding: 50px 0px;
+    }
+}
