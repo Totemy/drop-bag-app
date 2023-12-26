@@ -5,7 +5,7 @@
                 <ul class="catalog-list">
                     <li v-for="product in localData" :key="product.id" class="catalog-item">
                         <div class="catalog-content">
-                            <div class="catalog-img-wrap">
+                            <div class="catalog-img-wrap" @click="navigateToProduct(product.id)">
                                 <img
                                     :src="product.images[0]"
                                     alt=""
@@ -22,7 +22,7 @@
                             <button type="button" class="catalog-btn" 
                             @click="navigateToProduct(product.id)"
                             >
-                                Buy
+                                Детальніше
                             </button>
                         </div>
                     </li>
