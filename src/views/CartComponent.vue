@@ -8,7 +8,7 @@
                         <li>
                             {{ index + 1 }} - {{ item.name }}
                             <button
-                                class="btn btn__delete"
+                                class="btn__delete"
                                 @click="removeFromCart(index)"
                             >
                                 X
@@ -25,7 +25,7 @@
                     Очистити корзину
                 </button>
                 <router-link to="/checkout"
-                    ><button class="btn btn__offer">
+                    ><button class="btn btn__offer" @click="closeCart">
                         Оформити замовлення
                     </button></router-link
                 >
