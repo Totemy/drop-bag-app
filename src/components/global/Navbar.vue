@@ -28,13 +28,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="header__search">
-            <input
-                type="text"
-                class="header__search-input"
-                placeholder="Я хочу знайти ..."
-            />
+        </div>  
+        <div class="header__nav">
+            <button
+                @click="routeToMainPage()"
+                class="btn btn__navbar"
+                type="button"
+            >
+                Про нас
+            </button>
         </div>
         <div class="header__trash-con">
             <button class="btn btn__cart" @click="toggleCart" >
