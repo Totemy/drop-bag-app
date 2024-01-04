@@ -19,11 +19,17 @@
         
     }
     &__navbar{
-        background-color: $third-color;
-        color: $second-color;
+        background-color: rgba(76, 175, 80, 0);
+        color: $main-color;
+        border-radius: 50px;
+        padding: 5px 20px;
+        border: 1px solid $main-color ;
         &:hover{
             background-color: $main-color;
             color: $second-color;
+            border-radius: 50px;
+            padding: 5px 20px;
+            border: 1px solid $main-color ;
         }
     }
     &__cart {
