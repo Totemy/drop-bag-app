@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <div>
+        <div class="header__logo">
             <button
                 @click="routeToMainPage()"
                 class="btn btn__navbar"
@@ -9,8 +9,7 @@
                 Головна
             </button>
         </div>
-
-        <div>
+        <div class="header__category">
             <button
                 @click="catOpen = !catOpen"
                 class="btn btn__navbar dropdown-toggle "
@@ -30,21 +29,54 @@
                 </div>
             </div>
         </div>
-        <div>
-            <button
-                @click="routeToMainPage()"
-                class="btn btn__navbar"
-                type="button"
-            >
-                Про нас
-            </button>
+        <div class="header__search">
+            <input
+                type="text"
+                class="header__search-input"
+                placeholder="Я хочу знайти ..."
+            />
         </div>
-        <div>
+        <div class="header__trash-con">
             <button class="btn btn__cart" @click="toggleCart" >
                 <img src="/images/navbar/basket_icon.svg"/>
             </button>
         </div>
         <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
+        <!--<div class="header__account">
+            <button
+                @click="isOpen = !isOpen"
+                class="header__account-btn btn btn-secondary dropdown-toggle navbar__button-login"
+                type="button"
+            >
+                My Account
+            </button>
+            <ul v-if="isOpen" class="header__account-dropdown">
+                <button
+                    class="header__account-loginpage"
+                    to="/login"
+                    v-if="user == null"
+                >
+                    Sign In
+                </button>
+                <button
+                    class="header__account-loginpage"
+                    v-if="user == null"
+                    to="/register"
+                >
+                    Sign Up
+                </button>
+                <button
+                    class="header__account-loginpage"
+                    v-if="user"
+                    @click="logout()"
+                >
+                    Sign Out
+                </button>
+                <button class="header__account-loginpage" to="/dash" v-if="isAdmin==true">
+                    Admin
+                </button>
+            </ul>
+        </div>-->
     </div>
 </template>
 <script>
