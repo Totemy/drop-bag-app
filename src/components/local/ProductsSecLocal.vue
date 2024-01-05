@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="catalog">
-            <div class="container">
+            <div class="">
                 <ul class="catalog-list">
                     <li v-for="product in localData" :key="product.id" class="catalog-item">
                         <div class="catalog-content">
@@ -34,11 +34,15 @@
 </template>
 <script>
 import { DataService, EventBus } from '@/services/DataService';
+import MainPage from '@/components/global/MainPage.vue'
 export default {
     data(){
         return{
             localData:[]
         }
+    },
+    components(){
+        MainPage
     },
     created(){
         this.localData = DataService.data;

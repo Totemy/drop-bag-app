@@ -35,13 +35,18 @@
     &__cart {
 		width: 100%;
 		height: 100%;
-		background-color: $third-color;
-		border-radius: 5px;
 		padding: 2px;
         margin: 0px;
+        background-color: rgba(76, 175, 80, 0);
+        color: $main-color;
+        border-radius: 50px;
+        border: 1px solid $main-color ;
         &:hover{
             background-color: $main-color;
             color: $second-color;
+            border-radius: 50px;
+            padding: 5px 20px;
+            border: 1px solid $main-color ;
         }
 	}
 }

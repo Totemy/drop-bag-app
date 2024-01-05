@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-
-    <div class="container">
+    <div>
+        <MainPage/>
       <ProductsSecLocal/>
       <CategorySec/>
     </div>
@@ -16,6 +16,7 @@
 import CategorySec from "@/components/CategorySec.vue";
 import FooterPage from "@/components/global/FooterPage.vue";
 import ProductsSecLocal from "@/components/local/ProductsSecLocal.vue";
+import MainPage from '@/components/global/MainPage.vue'
 //import OfferSec from "@/components/Offer.vue";
 
 export default {
@@ -23,8 +24,8 @@ export default {
   components: {
     CategorySec,
     ProductsSecLocal,
-    FooterPage
-    //OfferSec
+      MainPage,
+      FooterPage
   },
   
 }

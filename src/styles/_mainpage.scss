@@ -1,0 +1,19 @@
+.main-page{
+  position: relative;
+  &__image{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  &__article{
+    position: absolute;
+    top: 80%;
+    left: 1%;
+    transform: translate(0%, -50%);
+    text-align: left;
+    h1{
+      font-size: 100px;
+      color: white;
+    }
+  }
+}
