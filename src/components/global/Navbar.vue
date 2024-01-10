@@ -1,49 +1,55 @@
 <template>
     <div class="header">
-        <div>
-            <button
-                @click="routeToMainPage()"
-                class="btn btn__navbar"
-                type="button"
-            >
-                Головна
-            </button>
-        </div>
-        <div>
-            <button
-                @click="catOpen = !catOpen"
-                class="btn btn__navbar dropdown-toggle "
-                type="button"
-                ref="categoryDropdown"
-            >
-                Категорії
-            </button>
-            <div class="header__category-dropdown" v-if="catOpen">
-                <div v-for="cat in Category" :key="cat.id">
-                    <div
-                        class="header__category-item"
-                        @click="navigateToCategory(cat.id)"
+        <div class="header__parent" :class="{'scrolled': isScrolled}">
+            <div class="header__navbar">
+                <div>
+                    <button
+                        @click="routeToMainPage()"
+                        class="btn btn__navbar"
+                        type="button"
                     >
-                        {{ cat.name }}
+                        Головна
+                    </button>
+                </div>
+                <div>
+                    <button
+                        @click="catOpen = !catOpen"
+                        class="btn btn__navbar dropdown-toggle "
+                        type="button"
+                        ref="categoryDropdown"
+                    >
+                        Категорії
+                    </button>
+                    <div class="header__category-dropdown" v-if="catOpen">
+                        <div v-for="cat in Category" :key="cat.id">
+                            <div
+                                class="header__category-item"
+                                @click="navigateToCategory(cat.id)"
+                            >
+                                {{ cat.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div>
+                    <button
+                        @click="routeToMainPage()"
+                        class="btn btn__navbar"
+                        type="button"
+                    >
+                        Про нас
+                    </button>
+                </div>
+                <div class="header__trash-con">
+                    <button class="btn btn__cart" @click="toggleCart" >
+                        <img src="/images/navbar/basket_icon.svg"/>
+                    </button>
+                </div>
+                <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
+
             </div>
+
         </div>
-        <div>
-            <button
-                @click="routeToMainPage()"
-                class="btn btn__navbar"
-                type="button"
-            >
-                Про нас
-            </button>
-        </div>
-        <div class="header__trash-con">
-            <button class="btn btn__cart" @click="toggleCart" >
-                <img src="/images/navbar/basket_icon.svg"/>
-            </button>
-        </div>
-        <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
 
     </div>
 </template>
@@ -77,12 +83,18 @@ export default {
             isOpen: false,
             catOpen: false,
             isAdmin: false,
+            isScrolled: false,
         }
     },
     computed: {
     ...mapState('cart', ['cartItems', 'isOpen']),
     },
-
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
     created() {
         const auth = getAuth()
         console.log(this.isAdmin)
@@ -178,6 +190,9 @@ export default {
             if (this.$route.path !== '/') {
                 this.$router.replace('/')
             }
+        },
+        handleScroll() {
+            this.isScrolled = window.scrollY > 0;
         },
     },
 }
