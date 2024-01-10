@@ -40,9 +40,9 @@
                         Про нас
                     </button>
                 </div>
-                <div class="header__trash-con">
-                    <button class="btn btn__cart" @click="toggleCart" >
-                        <img src="/images/navbar/basket_icon.svg"/>
+                <div >
+                    <button class="btn btn__navbar" @click="toggleCart" >
+                        Корзина
                     </button>
                 </div>
                 <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
