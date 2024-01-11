@@ -17,7 +17,6 @@
 import FooterPage from "@/components/global/FooterPage.vue";
 import ProductsSecLocal from "@/components/local/ProductsSecLocal.vue";
 import MainPage from '@/components/global/MainPage.vue'
-//import OfferSec from "@/components/Offer.vue";
 
 export default {
   name: 'HomeView',
