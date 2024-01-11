@@ -11,17 +11,36 @@
     justify-content: center;
     z-index: 100;
     &__content{
-        background: $third-color;
-        padding: 20px;
+        background: $main-color;
+        padding: 40px;
         border-radius: 5px;
     }
     &__article{
         
     }
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__image{
+        height: 100px;
+        width: 80px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
     &__list{
-
+        position: relative;
+    }
+    &__footer{
+        position: absolute;
+        right: 80px;
+        font-size:15px;
+        font-weight: bold;
     }
     &__buttons{
-        padding: 20px 0px;
+        padding: 40px 0px;
+        display: flex;
+        justify-content: space-around;
     }
 }

@@ -16,7 +16,7 @@
                             <div class="product-page__cart-wrap">
                                 <div class="product-page__article">
                                     <p class="catalog-subtitle">{{product.name}}</p>
-                                    <p class="catalog-price">{{ product.price }}</p>
+                                    <p class="catalog-price">{{ product.price }}грн</p>
                                 </div>
                                 <button type="button" class="btn btn__details"
                                         @click="navigateToProduct(product.id)"

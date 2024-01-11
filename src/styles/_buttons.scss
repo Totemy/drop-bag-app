@@ -13,7 +13,13 @@
         background-color: red;
     } 
     &__delete{
-        background-color: red;
+        background-color: $main-color;
+        border: 0px;
+        &:hover{
+            border-radius: 5px;
+            background-color: $second-color;
+            color: $main-color;
+        }
     }
     &__close{
         
@@ -59,4 +65,14 @@
             border: 1px solid $main-color ;
         }
 	}
+    &__offer{
+        background-color: $second-color;
+        color: $main-color;
+        font-weight: bold;
+        padding: 10px;
+        &:hover{
+            background-color: $main-color;
+            color: $second-color;
+        }
+    }
 }

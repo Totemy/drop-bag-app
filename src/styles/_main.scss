@@ -10,3 +10,18 @@ ul{
 .row{
     margin: 0px;
 }
+th{
+    padding:  0px 100px 0px 30px;
+    font-size: 15px;
+    font-weight: normal;
+    &:first-child{
+        padding-left: 110px;
+    }
+}
+td{
+    padding:  0px 100px 0px 30px;
+}
+tr{
+    display: block;
+    padding: 10px 0px;
+}
