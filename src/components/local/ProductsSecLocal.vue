@@ -1,34 +1,32 @@
 <template>
     <div>
-        <div class="catalog">
-            <div class="">
-                <ul class="catalog-list">
+        <div class="product-page">
+                <ul class="product-page__list">
                     <li v-for="product in localData" :key="product.id" class="catalog-item">
                         <div class="catalog-content">
-                            <div class="catalog-img-wrap" @click="navigateToProduct(product.id)">
+                            <div class="product-page__img-wrap" @click="navigateToProduct(product.id)">
                                 <img
                                     :src="product.images[0]"
                                     alt=""
-                                    class="catalog-img"
+                                    class="product-page__img"
                                     height="549"
                                     width="412"
                                 />
                             </div>
-                            <div class="catalog-info">
-                                <p class="catalog-subtitle">{{product.name}}</p>
-                                <p class="catalog-text">{{ product.description }}</p>
-                                <p class="catalog-price">{{ product.price }}</p>
+                            <div class="product-page__cart-wrap">
+                                <div class="product-page__article">
+                                    <p class="catalog-subtitle">{{product.name}}</p>
+                                    <p class="catalog-price">{{ product.price }}</p>
+                                </div>
+                                <button type="button" class="btn btn__details"
+                                        @click="navigateToProduct(product.id)"
+                                >
+                                    Детальніше
+                                </button>
                             </div>
-                            <button type="button" class="catalog-btn" 
-                            @click="navigateToProduct(product.id)"
-                            >
-                                Детальніше
-                            </button>
                         </div>
                     </li>
-                    
                 </ul>
-            </div>
         </div>
     </div>
 </template>

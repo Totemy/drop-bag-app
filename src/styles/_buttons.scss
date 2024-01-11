@@ -18,6 +18,16 @@
     &__close{
         
     }
+    &__details{
+        padding: 10px;
+        border-radius: 40px;
+        &:hover{
+            border-radius: 40px;
+            border: 1px solid $second-color;
+            color: $main-color;
+            background-color: $second-color;
+        }
+    }
     &__navbar{
         background-color: rgba(76, 175, 80, 0);
         color: $main-color;
