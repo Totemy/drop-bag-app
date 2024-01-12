@@ -12,6 +12,7 @@
     "bootstrap": "^5.3.1",
     "core-js": "^3.8.3",
     "firebase": "^9.17.1",
+    "inputmask": "^5.0.8",
     "jquery": "^3.7.1",
     "timers-browserify": "^2.0.12",
     "vue": "^2.6.14",
