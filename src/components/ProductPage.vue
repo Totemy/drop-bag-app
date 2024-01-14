@@ -56,19 +56,13 @@
             </div>
         </div>
         <div>
-            <div class="product__footer">
-                <div class="row">
-                    <div class="product__footer-cart col-2" v-for="cart in cartitems" :key="cart">
-                        <img class="product__side-img" :src="cart.images" alt=""/>
-                    </div>
-                </div>
-
-            </div>
+            <Proposal></Proposal>
         </div>
     </div>
 </template>
 <script>
 import Carousel from '@/components/CarouselPage.vue'
+import Proposal from '@/components/ProposalPage.vue'
 import {
     query,
     getDocs,
@@ -80,6 +74,7 @@ import { mapGetters } from 'vuex'
 export default {
     components: {
         Carousel,
+        Proposal,
     },
     data() {
         return {
@@ -133,7 +128,6 @@ export default {
             EventBus.$on('data-updated', (newData) => {
                 this.localData = newData
             })
-            this.cartitems = localData;
             this.product = localData.find(
                 (product) => product.id == this.productIdToFind
             )
