@@ -1,10 +1,10 @@
 .btn{
-    padding: 5px;
+    padding: 5px 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: 1px solid $second-color;
     &:hover{
-        border-radius: 5px;
+        border-radius: 50px;
         border: 1px solid $second-color;
         color: $main-color;
         background-color: $second-color;
@@ -23,6 +23,9 @@
     }
     &__close{
         
+    }
+    &__addtocart{
+        font-size: 20px;
     }
     &__details{
         padding: 10px;

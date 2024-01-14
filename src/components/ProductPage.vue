@@ -1,15 +1,12 @@
 <template>
-    <div class="product container">
+    <div class="product">
         <div class="row">
-            <div class="col-8">
-                <div>
-                    <button class="btn btn__back" @click="goBack()">
-                        Go back
-                    </button>
+            <div class="col-2">
+                <div  v-for="image in product.images" :key="image" >
+                    <img class="product__side-img" :src="image" alt="">
                 </div>
-                <div>
-                    <h2>{{ product.name }}</h2>
-                </div>
+            </div>
+            <div class="col-6">
                 <div class="product__carousel">
                     <carousel
                         :images="product.images"
@@ -18,38 +15,27 @@
                         @prevImage="prevImage"
                     />
                 </div>
-                <h3>Опис :</h3>
-                <div
-                    class="product__description"
-                    v-html="product.description"
-                ></div>
             </div>
             <div class="col-4">
                 <div class="product__buy-section">
-                    <h4>Купити</h4>
-                    <div class="row">
+                    <div class="product__main">
+                        <h2>{{ product.name }}</h2>
+                        <h3>{{product.price}} грн</h3>
+                    </div>
                         <div class="col">
                             <div class="product__size">
-                                <h5>Колір</h5>
-                                <label v-for="color in product.colors" :key="color">
-                                    <input type="radio" :value="color" v-model="selectedColor">
-                                        {{ color }}
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="product__size">
-                                <h5>Розмір</h5>
-                                <label v-for="size in product.sizes" :key="size">
-                                    <input type="radio" :value="size" v-model="selectedSize">
-                                        {{ size }}
+                                <h5>Виберіть розмір</h5>
+                                <label v-for="size in product.sizes" :key="size" class="product__size-label">
+                                    <input type="radio" :value="size" v-model="selectedSize" class="product__size-input">
+                                    <div class="product__size-circlce">
+                                        {{size}}
+                                    </div>
                                 </label>
                             </div>
                             
                         </div>
                         <div>
                             <div>
-                                {{ product.price }}
                                 <button
                                     class="btn btn__addtocart"
                                     @click="addToCart(product)"
@@ -58,8 +44,25 @@
                                 </button>
                             </div>
                         </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="product__bottom-section">
+                <div class="product__bottom-content">
+                    <h3>Опис</h3>
+                    <p>{{product.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="product__footer">
+                <div class="row">
+                    <div class="product__footer-cart col-2" v-for="cart in cartitems" :key="cart">
+                        <img class="product__side-img" :src="cart.images" alt=""/>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -88,6 +91,7 @@ export default {
             currentImageIndex: 0,
             selectedSize: null,
             selectedColor: null,
+            cartitems: [],
         }
     },
     created() {
@@ -129,7 +133,7 @@ export default {
             EventBus.$on('data-updated', (newData) => {
                 this.localData = newData
             })
-
+            this.cartitems = localData;
             this.product = localData.find(
                 (product) => product.id == this.productIdToFind
             )
