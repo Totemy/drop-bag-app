@@ -22,7 +22,7 @@
             </div>
             <div class="checkout__footer">
                 <div>
-                    <h2> Всього: {{summary}} </h2>
+                    <h2> Всього: {{sum}} </h2>
                     <div>
                         <button class="btn btn__offer">Оформити замовлення</button>
                     </div>
@@ -33,15 +33,18 @@
 </template>
 <script>
 import Inputmask from 'inputmask';
+import { mapGetters } from 'vuex';
 export default {
     data() {
         return {
             phoneNumber: '',
             name: '',
-            city: ''
+            city: '',
+            sum: null,
         }
     },
     computed: {
+        ...mapGetters('cart', ['cartItems']),
         formattedPhoneNumber() {
             return this.phoneNumber.replace(/^(\+\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '$1 $2 $3 $4 $5');
         },
@@ -68,6 +71,12 @@ export default {
                 event.preventDefault();
             }
         },
+        sumOfProducts(){
+            this.sum = this.cartItems.reduce((total, item) => {
+                const price = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
+                return total + price;
+            }, 0);
+        }
     },
 }
 </script>

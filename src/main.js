@@ -6,15 +6,14 @@ import { DataService } from './services/DataService';
 const jsonData = require('./json/products.json');
 
 DataService.setData(jsonData);
-// import "bootstrap";
 
-import firebase from "@/firebase";
-import "firebase/firestore";
 Vue.config.productionTip = false;
+
+
+store.dispatch('cart/initializeCartFromLocalStorage');
 
 new Vue({
   router,
   store,
-  firebase,
   render: (h) => h(App),
 }).$mount("#app");
