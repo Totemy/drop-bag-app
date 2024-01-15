@@ -80,7 +80,7 @@ export default {
             filteredProducts: [],
             Products: [],
             Category: [],
-            isOpen: false,
+            //isOpen: false,
             catOpen: false,
             isAdmin: false,
             isScrolled: false,
@@ -97,7 +97,6 @@ export default {
     },
     created() {
         const auth = getAuth()
-        console.log(this.isAdmin)
         onAuthStateChanged(auth, (userAuth) => {
             if (userAuth) {
                 this.user = userAuth
@@ -106,15 +105,12 @@ export default {
                     userAuth.customClaims.isAdmin === true
                 ) {
                     this.isAdmin = true
-                    console.log(this.isAdmin)
                 } else {
                     this.isAdmin = false
-                    console.log(this.isAdmin)
                 }
             } else {
                 this.user = null
-                this.isAdmin = false 
-                console.log(this.isAdmin)
+                this.isAdmin = false
             }
         })
         this.getProducts()

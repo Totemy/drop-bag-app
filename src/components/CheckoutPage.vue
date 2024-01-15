@@ -81,7 +81,7 @@ export default {
         sendCheckout(){
             const items = this.cartItems.map(offerItems => {
                 // eslint-disable-next-line no-unused-vars
-                const { images, color, ...itemWithoutUnwantedFields } = offerItems;
+                const { images, ...itemWithoutUnwantedFields } = offerItems;
                 return itemWithoutUnwantedFields;
             });
             let params = {
