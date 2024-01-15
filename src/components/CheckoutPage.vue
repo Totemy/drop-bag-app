@@ -4,7 +4,7 @@
             <h2>Оформлення замовлення</h2>
             <div class="checkout__personal">
                 <h4>Прізвище ім'я по батькові</h4>
-                <input class="checkout__input" type="text" placeholder="ПІБ" :value="name" />
+                <input class="checkout__input" type="text" placeholder="ПІБ" v-model="name" />
                 <h4>
                     Номер телефону
                 </h4>
@@ -17,7 +17,16 @@
                     @keydown="handleKeyDown"
                 />
                 <h4>Місто проживання</h4>
-                <input class="checkout__input" type="text"  :value="city"/> <!-- todo add api with all ukraine city -->
+                <input class="checkout__input" type="text"  v-model="city"/>
+
+            </div>
+            <div class="checkout__footer">
+                <div>
+                    <h2> Всього: {{summary}} </h2>
+                    <div>
+                        <button class="btn btn__offer">Оформити замовлення</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -41,7 +50,7 @@ export default {
         this.initializeInputMask();
     },
     methods: {
-        initializeInputMask() { //todo repair features
+        initializeInputMask() {
             Inputmask({
                 mask: '+380 99 999 99 99',
                 clearIncomplete: true,

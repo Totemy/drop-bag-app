@@ -73,9 +73,11 @@
         color: $main-color;
         font-weight: bold;
         padding: 10px;
+        border-radius: 5px;
         &:hover{
             background-color: $main-color;
             color: $second-color;
+            border-radius: 5px;
         }
     }
 }
