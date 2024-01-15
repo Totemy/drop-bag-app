@@ -24,7 +24,7 @@
                 <div>
                     <h2> Всього: {{sum}} </h2>
                     <div>
-                        <button class="btn btn__offer">Оформити замовлення</button>
+                        <button class="btn btn__offer" @click="sendCheckout()">Оформити замовлення</button>
                     </div>
                 </div>
             </div>
@@ -34,6 +34,7 @@
 <script>
 import Inputmask from 'inputmask';
 import { mapGetters } from 'vuex';
+import  emailjs from '@emailjs/browser'
 export default {
     data() {
         return {
@@ -76,6 +77,25 @@ export default {
                 const price = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
                 return total + price;
             }, 0);
+        },
+        sendCheckout(){
+            const items = this.cartItems.map(offerItems => {
+                // eslint-disable-next-line no-unused-vars
+                const { images, color, ...itemWithoutUnwantedFields } = offerItems;
+                return itemWithoutUnwantedFields;
+            });
+            let params = {
+                name: this.name,
+                offer: JSON.stringify(items),
+                city: this.city,
+                phone: this.formattedPhoneNumber,
+            };
+            emailjs.send('service_pq1z0dp', 'template_7bdafnn', params, '_VH4zMsf2RUD93h6l')
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
         }
     },
 }
