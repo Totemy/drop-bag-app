@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_KEY =  'fc532f0b68f563638171396db1bc8485';
-const API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+const API_KEY = process.env.VUE_APP_API_KEY;
+const API_URL = process.env.VUE_APP_API_URL;
 
 const axiosInstance = axios.create({
   baseURL: API_URL,

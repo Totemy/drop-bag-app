@@ -3,17 +3,23 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-
+const API_KEY = process.env.FIREBASE_API_KEY
+const AUTH_DOMAIN = process.env.FIREBASE_AUTH_DOMAIN
+const PROJECT_ID = process.env.FIREBASE_PROJECT_ID
+const STORAGE_BUCKET = process.env.FIREBASE_STORAGE_BUCKETT
+const MESSAGING_SENDER_ID = process.env.FIREBASE_MESSAGING_SENDER_ID
+const APP_ID = process.env.FIREBASE_APP_ID
+const MEASUREMENT_ID = process.env.FIREBASE_MEASUREMENT_ID
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-	apiKey: 'AIzaSyBO2GNsHoMw56p0RATY-vJ91dayEbg3HIE',
-  authDomain: 'lvivbag.firebaseapp.com',
-  projectId: 'lvivbag',
-  storageBucket: 'lvivbag.appspot.com',
-  messagingSenderId:  '686685728078',
-  appId: '1:686685728078:web:9191dca265af9a1a03821f',
-  measurementId: 'G-4XZ29R4GJF',
+  apiKey: API_KEY,
+  authDomain: AUTH_DOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: STORAGE_BUCKET,
+  messagingSenderId: MESSAGING_SENDER_ID ,
+  appId: APP_ID ,
+  measurementId: MEASUREMENT_ID ,
 };
 
 // Initialize Firebase

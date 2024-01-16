@@ -2,9 +2,10 @@
     <div class="product container">
         <div class="row">
             <div class="product__sidebar">
-                <div  v-for="image in product.images" :key="image" >
-                    <img class="product__side-img" :src="image" alt="">
-                </div>
+                <img class="product__side-img" :src="product.images[0]" alt="">
+                <img class="product__side-img" :src="product.images[1]" alt="">
+                <img class="product__side-img" :src="product.images[2]" alt="">
+                <img class="product__side-img" :src="product.images[3]" alt="">
             </div>
             <div class="col-6">
                 <div class="product__carousel">
