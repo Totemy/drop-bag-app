@@ -5,6 +5,10 @@
         margin-bottom: 50px;
         font-size: 25px;
     }
+    &__sidebar{
+        flex: 0 0 auto;
+        width: 150px;
+    }
     &__side-img{
         width: 140px;
         height: 140px;
@@ -39,7 +43,7 @@
         margin-bottom: 50px;
     }
     &__bottom-section{
-        margin: 10px 0px 20px 20px;
+        margin: 10px 0px 20px 0px;
         font-size: 25px;
         h3{
             font-weight: bolder;
@@ -47,7 +51,13 @@
     }
     &__footer-cart{
         text-align: center;
-
+    }
+    &__footer{
+        margin-top: 100px;
+    }
+    &__footer-article{
+        font-weight: bold;
+        margin-bottom: 20px;
     }
     h2{
         font-size: 55px;

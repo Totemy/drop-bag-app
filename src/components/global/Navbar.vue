@@ -42,7 +42,7 @@
                 </div>
                 <div >
                     <button class="btn btn__navbar" @click="toggleCart" >
-                        Корзина
+                        Кошик
                     </button>
                 </div>
                 <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>

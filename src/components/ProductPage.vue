@@ -1,7 +1,7 @@
 <template>
-    <div class="product">
+    <div class="product container">
         <div class="row">
-            <div class="col-2">
+            <div class="product__sidebar">
                 <div  v-for="image in product.images" :key="image" >
                     <img class="product__side-img" :src="image" alt="">
                 </div>

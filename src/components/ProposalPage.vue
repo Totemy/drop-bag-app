@@ -1,6 +1,9 @@
 <template>
     <div>
         <div class="product__footer">
+            <div class="product__footer-article">
+                <h3 >Також вам може сподобатись</h3>
+            </div>
             <div class="row">
                 <div class="product__footer-cart col-2" v-for="cart in getRandomCartItems" :key="cart">
                     <img class="product__side-img" :src="cart.images" alt="" @click="navigateToProduct(cart.id)"/>
