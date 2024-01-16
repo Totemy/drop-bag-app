@@ -27,13 +27,8 @@ export default {
     },
     computed: {
         getRandomCartItems() {
-            // Copy the original array to avoid modifying the original data
             const originalCartItems = [...this.cartitems];
-
-            // Shuffle the array to get a random order
             const shuffledCartItems = this.shuffleArray(originalCartItems);
-
-            // Return the first 5 items from the shuffled array
             return shuffledCartItems.slice(0, 5);
         },
     },
@@ -50,7 +45,6 @@ export default {
             location.reload()
         },
         shuffleArray(array) {
-            // Function to shuffle an array using Fisher-Yates algorithm
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];

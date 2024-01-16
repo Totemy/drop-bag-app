@@ -15,7 +15,7 @@
 // @ is an alias to /src
 //import CategorySec from "@/components/CategorySec.vue";
 import FooterPage from "@/components/global/FooterPage.vue";
-import ProductsSecLocal from "@/components/local/ProductsSecLocal.vue";
+import ProductsSecLocal from "@/components/ProductsSecLocal.vue";
 import MainPage from '@/components/global/MainPage.vue'
 
 export default {

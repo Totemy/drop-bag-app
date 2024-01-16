@@ -58,7 +58,7 @@ import CategoryPage from '@/components/CategoryPage.vue'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import router from '../../router'
 import { mapState, mapMutations } from 'vuex';
-import Cart from '../../views/CartComponent.vue'
+import Cart from '@/components/global/CartComponent.vue'
 import {
     getFirestore,
     query,

@@ -63,12 +63,7 @@
 <script>
 import Carousel from '@/components/CarouselPage.vue'
 import Proposal from '@/components/ProposalPage.vue'
-import {
-    query,
-    getDocs,
-    collectionGroup,
-    getFirestore,
-} from 'firebase/firestore'
+import { getProducts } from '@/services/FirebaseDataService.js';
 import { DataService, EventBus } from '../services/DataService'
 import { mapGetters } from 'vuex'
 export default {
@@ -91,6 +86,7 @@ export default {
     },
     created() {
         this.getLocalData()
+        //this.loadProduct()
     },
     computed: {
         ...mapGetters('cart', ['cartItems']),
@@ -105,23 +101,8 @@ export default {
         goBack() {
             this.$router.go(-1)
         },
-        async getProducts() {
-            const db = getFirestore()
-            const sousCollectionRef = query(collectionGroup(db, `products`))
-            const sousCollectionSnapshot = await getDocs(sousCollectionRef)
-            this.Products = []
-            sousCollectionSnapshot.forEach((doc) => {
-                this.Products.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    description: doc.data().description,
-                    price: doc.data().price,
-                    image: doc.data().image,
-                })
-            })
-            this.product = this.Products.find(
-                (product) => product.id === this.productIdToFind
-            )
+        async loadProduct() {
+            this.product = await getProducts(this.productIdToFind);
         },
         async getLocalData() {
             let localData = DataService.data
