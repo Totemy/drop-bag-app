@@ -17,6 +17,10 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 100px 120px;
+    @media screen and (max-width: 768px) {
+      display: block;
+      padding: 30px;
+    }
   }
   &__article{
     width: 250px;
