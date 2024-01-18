@@ -74,10 +74,8 @@ import {
     getFirestore,
     query,
     getDocs,
-    collectionGroup,
     collection,
 } from 'firebase/firestore'
-const db = getFirestore()
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'navbar',
@@ -125,7 +123,6 @@ export default {
                 this.isAdmin = false
             }
         })
-        this.getProducts()
         this.getCategory()
 
         this.Category.forEach((Category) => {
@@ -168,28 +165,6 @@ export default {
                 })
             })
         },
-        async getProducts() {
-            const sousCollectionRef = query(collectionGroup(db, `products`))
-            const sousCollectionSnapshot = await getDocs(sousCollectionRef)
-            this.Products = []
-            sousCollectionSnapshot.forEach((doc) => {
-                this.Products.push({
-                    id: doc.id,
-                    name: doc.data().name,
-                    description: doc.data().description,
-                    price: doc.data().price,
-                    image: doc.data().image,
-                })
-            })
-        },
-        filterItems() {
-            this.filteredProducts = this.Products.filter((item) => {
-                return item.name
-                    .toLowerCase()
-                    .includes(this.searchProduct.toLowerCase())
-            })
-            this.$root.$emit('filtered-Products', this.filteredProducts)
-        },
         navigateToCategory(categoryId) {
             this.$router.push({ name: 'CategoryPage', params: { categoryId } })
             this.catOpen = false
@@ -202,9 +177,6 @@ export default {
         handleScroll() {
             this.isScrolled = window.scrollY > 0;
         },
-        openBurger(){
-
-        }
     },
 }
 </script>
