@@ -1,81 +1,30 @@
 <template>
-    <div class="products">
-        <h3>Товари</h3>
-        <div class="row">
-            <div class="col-4" v-for="prod in Products" :key="prod.id">
-              <div class="card">
-
-              </div>
-                <img class="card__img" :src="prod.image" >
-                <div class="card__details">
-                    <button @click="
-                addToCart({
-                  id: prod.id,
-                  name: prod.name,
-                  price: prod.price,
-                  image: prod.image,
-                  qte: qte,
-                })
-              ">До кошика</button>
-              <button :to="{
-                name: 'Product',
-                params: {
-                  id: prod.id,
-                  name: prod.name,
-                  image: prod.image,
-                  price: prod.price,
-                  desc: prod.description,
-                },
-              }">
-                Відsssкрити
-              </button>
-              <div >
-                <div>
-                    {{ prod.name }}
-                </div>
-                <div>
-                    {{ prod.price }} hrn
-                </div>
-              </div>
-                </div>
-            </div>
-        </div>
-        <div class="row" ref="resultsSection" v-if="filteredProducts.length > 0">
-            <div class="col"  v-for="item in filteredProducts"
-        :key="item.id">
-                <img :src="item.image">
-                <button @click="
-                addToCart({
-                  id: item.id,
-                  name: item.name,
-                  price: item.price,
-                  image: item.image,
-                  qte: qte,
-                })
-              ">
-                    fill
-                </button>
-                <button 
-                    :to="{
-                    name: item.name,
-                    params: {
-                    id: item.id,
-                    name: item.name,
-                    image: item.image,
-                    price: item.price,
-                    desc: item.description,
-                    },
-                }">
-
-                </button>
-                <div>
-                    <h4>{{ item.name }}</h4>
-                    <h5>{{ item.price }} hrn</h5>
-                </div>
-            </div>
-        </div>
-        <div class="row" v-else ref="resultsSection">
-
+    <div>
+        <div class="product-page">
+            <ul class="product-page__list">
+                <li v-for="product in Products" :key="product.id" class="catalog-item">
+                    <div class="catalog-content">
+                        <div class="product-page__img-wrap" @click="navigateToProduct(product.id)">
+                            <img
+                                :src="product.images[0]"
+                                alt=""
+                                class="product-page__img"
+                            />
+                        </div>
+                        <div class="product-page__cart-wrap">
+                            <div class="product-page__article">
+                                <p class="catalog-subtitle">{{product.name}}</p>
+                                <p class="catalog-price">{{ product.price }}грн</p>
+                            </div>
+                            <button type="button" class="btn btn__details"
+                                    @click="navigateToProduct(product.id)"
+                            >
+                                Детальніше
+                            </button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
