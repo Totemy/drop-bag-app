@@ -25,7 +25,7 @@
                             class="btn__delete"
                             @click="removeFromCart(index)"
                         >
-                            X
+                            Вилучити
                         </button></td>
                     </tr>
                     <div class="cart-count__footer">

@@ -4,6 +4,7 @@
     display: block;
     max-width: 100%;
     height: auto;
+    width: -webkit-fill-available;
   }
   &__card{
 
@@ -15,7 +16,7 @@
     gap: 100px 120px;
   }
   &__article{
-
+    width: 250px;
   }
   &__button{
 

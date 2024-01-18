@@ -9,10 +9,35 @@
 		left: 0;
 		padding: 10px;
 		width: 100%;
+		transition: background-color 0.5s ease;
 	}
 	&__navbar{
 		display: flex;
 		justify-content: space-around;
+		@media only screen and (max-width: 768px) {
+			display: none;
+		}
+	}
+	&_mob-list{
+		display: none;
+		@media only screen and (max-width: 768px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	&__burger-menu {
+		display: none;
+		flex-direction: column;
+		cursor: pointer;
+		@media only screen and (max-width: 768px) {
+			display: flex;
+		}
+	}
+	.bar{
+		width: 30px;
+		height: 3px;
+		background-color: white;
+		margin: 6px 0;
 	}
 	&__logo{
 		position: relative;
@@ -65,7 +90,7 @@
 		color: #fff;
 	}
 	.scrolled{
-		transition: background-color 1s ease;
+		transition: background-color 0.5s ease;
 		background: rgba(0, 0, 0, 0.5);
 	}
 }

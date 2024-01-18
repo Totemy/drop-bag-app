@@ -1,7 +1,18 @@
 <template>
     <div class="header">
         <div class="header__parent" :class="{'scrolled': isScrolled}">
+            <div class="header__burger-menu"  @click="openBar = !openBar">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="header__mob-list" v-if="openBar">
+                <div @click="routeToMainPage()">Головна</div>
+                <div @click="routeToMainPage()">Про нас</div>
+                <div @click="toggleCart">Кошик</div>
+            </div>
             <div class="header__navbar">
+
                 <div>
                     <button
                         @click="routeToMainPage()"
@@ -84,6 +95,7 @@ export default {
             catOpen: false,
             isAdmin: false,
             isScrolled: false,
+            openBar: false
         }
     },
     computed: {
@@ -190,6 +202,9 @@ export default {
         handleScroll() {
             this.isScrolled = window.scrollY > 0;
         },
+        openBurger(){
+
+        }
     },
 }
 </script>

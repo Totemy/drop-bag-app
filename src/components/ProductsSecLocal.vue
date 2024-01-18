@@ -9,8 +9,6 @@
                                     :src="product.images[0]"
                                     alt=""
                                     class="product-page__img"
-                                    height="549"
-                                    width="412"
                                 />
                             </div>
                             <div class="product-page__cart-wrap">
