@@ -93,6 +93,7 @@ export default {
             emailjs.send('service_pq1z0dp', 'template_7bdafnn', params, '_VH4zMsf2RUD93h6l')
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
+                    alert('Замовлення оформлене.')
                 }, function(error) {
                     console.log('FAILED...', error);
                 });

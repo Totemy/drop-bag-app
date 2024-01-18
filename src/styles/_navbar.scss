@@ -18,11 +18,18 @@
 			display: none;
 		}
 	}
-	&_mob-list{
+	&__mob-list{
 		display: none;
+		font-size: 40px;
 		@media only screen and (max-width: 768px) {
+			position: absolute;
+			top: 60px;
+			right: 15px;
 			display: flex;
+
+			color: $main-color;
 			flex-direction: column;
+			background: rgba(0, 0, 0, 0.5);
 		}
 	}
 	&__burger-menu {
@@ -31,6 +38,8 @@
 		cursor: pointer;
 		@media only screen and (max-width: 768px) {
 			display: flex;
+			position: absolute;
+			right: 15px;
 		}
 	}
 	.bar{
