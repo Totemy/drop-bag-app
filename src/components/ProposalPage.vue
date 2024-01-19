@@ -5,7 +5,7 @@
                 <h3 >Також вам може сподобатись</h3>
             </div>
             <div class="row">
-                <div class="product__footer-cart col-2" v-for="cart in getRandomCartItems" :key="cart">
+                <div class="product__footer-cart col-2 col-2-md-auto" v-for="cart in getRandomCartItems" :key="cart">
                     <img class="product__side-img" :src="cart.images" alt="" @click="navigateToProduct(cart.id)"/>
                 </div>
             </div>

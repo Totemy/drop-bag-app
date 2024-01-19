@@ -1,53 +1,52 @@
 <template>
     <div class="product container">
-        <div class="row">
-            <div class="product__sidebar">
-                <img class="product__side-img" :src="product.images[0]" alt="">
-                <img class="product__side-img" :src="product.images[1]" alt="">
-                <img class="product__side-img" :src="product.images[2]" alt="">
-                <img class="product__side-img" :src="product.images[3]" alt="">
-            </div>
-            <div class="col-6">
-                <div class="product__carousel">
-                    <carousel
-                        :images="product.images"
-                        :currentIndex="currentImageIndex"
-                        @nextImage="nextImage"
-                        @prevImage="prevImage"
-                    />
+        <div class="">
+            <div class="product__content">
+                <div class="product__sidebar">
+                    <img class="product__side-img" :src="product.images[0]" alt="">
+                    <img class="product__side-img" :src="product.images[1]" alt="">
+                    <img class="product__side-img" :src="product.images[2]" alt="">
+                    <img class="product__side-img" :src="product.images[3]" alt="">
                 </div>
-            </div>
-            <div class="col-4">
+                    <div class="product__carousel">
+                        <carousel
+                            :images="product.images"
+                            :currentIndex="currentImageIndex"
+                            @nextImage="nextImage"
+                            @prevImage="prevImage"
+                        />
+                    </div>
                 <div class="product__buy-section">
                     <div class="product__main">
                         <h2>{{ product.name }}</h2>
                         <h3>{{product.price}} грн</h3>
                     </div>
-                        <div class="col">
-                            <div class="product__size">
-                                <h5>Виберіть розмір</h5>
-                                <label v-for="size in product.sizes" :key="size" class="product__size-label">
-                                    <input type="radio" :value="size" v-model="selectedSize" class="product__size-input">
-                                    <div class="product__size-circlce">
-                                        {{size}}
-                                    </div>
-                                </label>
-                            </div>
-                            
+                    <div>
+                        <div class="product__size">
+                            <h5>Виберіть розмір</h5>
+                            <label v-for="size in product.sizes" :key="size" class="product__size-label">
+                                <input type="radio" :value="size" v-model="selectedSize" class="product__size-input">
+                                <div class="product__size-circlce">
+                                    {{size}}
+                                </div>
+                            </label>
                         </div>
-                        <div>
-                            <div>
-                                <button
-                                    class="btn btn__addtocart"
-                                    @click="addToCart(product)"
-                                >
-                                    Додати до кошика
-                                </button>
-                            </div>
+
+                    </div>
+                    <div>
+                        <div class="product__button-buy">
+                            <button
+                                class="btn btn__addtocart"
+                                @click="addToCart(product)"
+                            >
+                                Додати до кошика
+                            </button>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
+
         <div>
             <div class="product__bottom-section">
                 <div class="product__bottom-content">

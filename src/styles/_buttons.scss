@@ -26,6 +26,9 @@
     }
     &__addtocart{
         font-size: 20px;
+        @media screen and (max-width: 768px) {
+            font-size: 36px;
+        }
     }
     &__details{
         padding: 10px;
