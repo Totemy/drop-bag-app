@@ -10,6 +10,7 @@
                 <div @click="routeToMainPage()">Головна</div>
                 <div @click="routeToMainPage()">Про нас</div>
                 <div @click="toggleCart">Кошик</div>
+                <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
             </div>
             <div class="header__navbar">
 
@@ -176,6 +177,9 @@ export default {
         },
         handleScroll() {
             this.isScrolled = window.scrollY > 0;
+        },
+        toggleCartMobile() {
+            this.$store.commit('cart/toggleCart');
         },
     },
 }
