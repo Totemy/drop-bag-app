@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../components/HomeView.vue'
 import { getAuth } from "firebase/auth";
 
 Vue.use(VueRouter);
@@ -14,12 +14,12 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/Login.vue"),
+    component: () => import("../components/Login.vue"),
   },
   {
     path: "/register",
     name: "Register",
-    component: () => import("../views/Register.vue"),
+    component: () => import("../components/Register.vue"),
   },
   {
     path: "/navbar",
@@ -45,7 +45,7 @@ const routes = [
   {
     path: "/Dash",
     name: "Dash",
-    component: () => import("../views/admin/Dashboard.vue"),
+    component: () => import("@/components/admin/Dashboard.vue"),
     children: [
       {
         path: "/sidebar",
@@ -55,28 +55,28 @@ const routes = [
         children: [
           {
             path: "category",
-            component: () => import("../views/admin/CategoryList.vue"),
+            component: () => import("@/components/admin/CategoryList.vue"),
             // meta: { requiresAuth: true },
           },
           {
             path: "products",
             // name: "AllProd",
-            component: () => import("../views/admin/ProductsList.vue"),
+            component: () => import("@/components/admin/ProductsList.vue"),
             // meta: { requiresAuth: true },
           },
           {
             path: "profile",
             // name: "profile",
-            component: () => import("../views/Profile.vue"),
+            component: () => import("../components/Profile.vue"),
             meta: { requiresAuth: true },
           },
           {
             path: "import-product",
-            component: () => import("../views/admin/ImportProduct.vue"),
+            component: () => import("@/components/admin/ImportProduct.vue"),
           },
           {
             path: "import-category",
-            component: () => import("../views/admin/ImportCategory.vue"),
+            component: () => import("@/components/admin/ImportCategory.vue"),
           }
         ],
       },

@@ -10,26 +10,26 @@
 		padding: 10px;
 		width: 100%;
 		transition: background-color 0.5s ease;
+		@media only screen and (max-width: 768px){
+			background: rgba(0, 0, 0, 0.5);
+			position: fixed;
+		}
 	}
 	&__navbar{
 		display: flex;
 		justify-content: space-around;
 		@media only screen and (max-width: 768px) {
 			display: none;
+
 		}
 	}
 	&__mob-list{
 		display: none;
 		font-size: 40px;
 		@media only screen and (max-width: 768px) {
-			position: absolute;
-			top: 60px;
-			right: 15px;
 			display: flex;
-
-			color: $main-color;
 			flex-direction: column;
-			background: rgba(0, 0, 0, 0.5);
+			color: $main-color;
 		}
 	}
 	&__burger-menu {
@@ -38,8 +38,6 @@
 		cursor: pointer;
 		@media only screen and (max-width: 768px) {
 			display: flex;
-			position: absolute;
-			right: 15px;
 		}
 	}
 	.bar{
@@ -47,6 +45,7 @@
 		height: 3px;
 		background-color: white;
 		margin: 6px 0;
+		border: 0.5px solid $second-color;
 	}
 	&__logo{
 		position: relative;
