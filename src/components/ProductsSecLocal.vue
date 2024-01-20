@@ -49,6 +49,7 @@ export default {
     methods:{
         navigateToProduct(productId){
             this.$router.push({ name: 'ProductPage', params: { productId } });
+            document.documentElement.scrollTop = 0;
         }
     }
 }
