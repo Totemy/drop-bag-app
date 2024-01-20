@@ -10,10 +10,19 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
     &__content{
         background: $main-color;
         padding: 40px;
         border-radius: 5px;
+        @media screen and (max-width: 768px) {
+            border-radius: 0px;
+            padding: 20px;
+            color: $second-color;
+            font-size: medium;
+        }
     }
     &__article{
         

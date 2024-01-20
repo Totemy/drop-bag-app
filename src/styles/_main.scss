@@ -17,11 +17,22 @@ th{
     &:first-child{
         padding-left: 110px;
     }
+    @media screen and (max-width: 768px){
+        padding: 0px;
+    }
 }
 td{
     padding:  0px 100px 0px 30px;
+    @media screen and (max-width: 768px){
+        padding: 0px;
+    }
 }
 tr{
     display: block;
     padding: 10px 0px;
+    @media screen and (max-width: 768px){
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+    }
 }

@@ -13,7 +13,6 @@
                 <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
             </div>
             <div class="header__navbar">
-
                 <div>
                     <button
                         @click="routeToMainPage()"
@@ -169,17 +168,20 @@ export default {
         navigateToCategory(categoryId) {
             this.$router.push({ name: 'CategoryPage', params: { categoryId } })
             this.catOpen = false
+
         },
         routeToMainPage() {
             if (this.$route.path !== '/') {
                 this.$router.replace('/')
             }
+            this.openBar = false;
         },
         handleScroll() {
             this.isScrolled = window.scrollY > 0;
         },
         toggleCartMobile() {
             this.$store.commit('cart/toggleCart');
+            this.openBar = false;
         },
     },
 }

@@ -20,7 +20,7 @@
                         <td>{{ item.name }}
                            </td>
                         <td> {{item.size}} </td>
-                        <td> {{item.price}} </td>
+                        <td> {{item.price}} грн </td>
                         <td> <button
                             class="btn__delete"
                             @click="removeFromCart(index)"
