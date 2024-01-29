@@ -1,10 +1,23 @@
 [
     {
-        "name": "Зимові чоботи",
+        "name": "Nike",
         "id": "1"
     },
     {
-        "name": "Кросівки",
+        "name": "Merreli",
         "id": "2"
+    },
+    {
+        "name": "Adidas",
+        "id": "3"
+    },
+    {
+        "name": "Reebook",
+        "id": "4"
+    },
+    {
+        "name": "Columbia",
+        "id": "5"
     }
+
 ]
