@@ -58,14 +58,22 @@
 	}
 	&__category-dropdown {
 		position: absolute;
-		background-color: $second-color;
+		background-color: $main-color;
 		padding-left: 10px;
-		border-radius: 0px 0px 10px 10px ;
-		top: 48px;
+		border-radius: 10px;
+		border: 0.5px solid $second-color;
+		//border-radius: 0px 0px 10px 10px ;
+		top: 88px;
 	}
 	&__category-item {
-		min-width: 250px;
-		color: #fff;
+		min-width: 218px;
+		font-size: 28px;
+		cursor: pointer;
+		&:hover{
+			background-color: $second-color;
+			color: $main-color;
+
+		}
 	}
 	&__search {
 		width: 100%;

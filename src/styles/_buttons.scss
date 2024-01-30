@@ -53,9 +53,10 @@
         border-radius: 50px;
         padding: 5px 20px;
         border: 1px solid $second-color; ;
+        font-size: 34px;
         &:hover{
-            background-color: $main-color;
-            color: $second-color;
+            background-color: $second-color;
+            color: $main-color;
             border-radius: 50px;
             padding: 5px 20px;
             border: 1px solid $main-color ;
