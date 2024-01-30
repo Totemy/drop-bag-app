@@ -3,6 +3,13 @@
   @media screen and (max-width: 768px) {
     margin-top: 50px;
   }
+  &__header{
+    margin-left: 128px;
+    @media screen and (max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+
   &__img{
     display: block;
     max-width: 100%;
