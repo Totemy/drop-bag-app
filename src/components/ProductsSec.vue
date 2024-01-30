@@ -2,8 +2,8 @@
     <div>
         <div class="product-page">
             <ul class="product-page__list">
-                <li v-for="product in Products" :key="product.id" class="catalog-item">
-                    <div class="catalog-content">
+                <li v-for="product in Products" :key="product.id">
+                    <div>
                         <div class="product-page__img-wrap" @click="navigateToProduct(product.id)">
                             <img
                                 :src="product.images[0]"
@@ -13,8 +13,8 @@
                         </div>
                         <div class="product-page__cart-wrap">
                             <div class="product-page__article">
-                                <p class="catalog-subtitle">{{product.name}}</p>
-                                <p class="catalog-price">{{ product.price }}грн</p>
+                                <p>{{product.name}}</p>
+                                <p>{{ product.price }}грн</p>
                             </div>
                             <button type="button" class="btn btn__details"
                                     @click="navigateToProduct(product.id)"

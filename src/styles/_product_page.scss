@@ -1,5 +1,6 @@
 .product-page{
   margin-top: 200px;
+  overflow: hidden;
   @media screen and (max-width: 768px) {
     margin-top: 50px;
   }
@@ -40,15 +41,20 @@
     align-items: center;
     justify-content: space-between;
     margin: 20px 0px;
+    overflow: hidden;
   }
   &__img{
     border-radius: 40px;
     width: 450px;
     height: 550px;
     object-fit: cover;
+    transition: 1s;
+    &:hover{
+      transform: scale(1.2);
+    }
   }
   &__img-wrap{
-
+    overflow: hidden;
+    border-radius: 40px;
   }
-
 }
