@@ -25,22 +25,30 @@
 </template>
 <script>
 import { getCategory } from '@/services/FirebaseDataService'
-
+import { DataService, EventBus } from '@/services/DataService';
 
 export default {
   name: "CategSec",
   data() {
     return {
       Category: [],
+        localData:[]
     };
   },
   created() {
     this.getCategory();
+    this.getLocalData();
   },
   methods: {
     async getCategory() {
       this.Category = await getCategory()
     },
+      getLocalData(){
+          this.localData = DataService.data.categories;
+          EventBus.$on('data-updated', (newData) => {
+              this.localData = newData.categories;
+          });
+      },
     navigateToCategory(categoryId) {
       this.$router.push({ name: 'CategoryPage', params: { categoryId } });
       this.catOpen = false; 

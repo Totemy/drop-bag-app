@@ -40,6 +40,14 @@
                                 {{ cat.name }}
                             </div>
                         </div>
+                        <div v-for="locCat in localDataCat" :key="locCat.id">
+                            <div
+                                class="header__category-item"
+                                @click="navigateToCategory(cat.id)"
+                            >
+                                {{ locCat.name }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -65,7 +73,6 @@
     </div>
 </template>
 <script>
-import CategoryPage from '@/components/CategoryPage.vue'
 import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth'
 import router from '../../router'
 import { mapState, mapMutations } from 'vuex';
@@ -76,6 +83,7 @@ import {
     getDocs,
     collection,
 } from 'firebase/firestore'
+import { DataService, EventBus } from '@/services/DataService'
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'navbar',
@@ -89,6 +97,7 @@ export default {
             filteredProducts: [],
             Products: [],
             Category: [],
+            localDataCat: [],
             //isOpen: false,
             catOpen: false,
             isAdmin: false,
@@ -106,6 +115,7 @@ export default {
         window.removeEventListener('scroll', this.handleScroll);
     },
     created() {
+        this.getLocalData();
         const auth = getAuth()
         onAuthStateChanged(auth, (userAuth) => {
             if (userAuth) {
@@ -123,16 +133,7 @@ export default {
                 this.isAdmin = false
             }
         })
-        this.getCategory()
 
-        this.Category.forEach((Category) => {
-            this.$router.addRoute({
-                path: `/category/${Category.id}`,
-                name: 'CategoryPage',
-                component: CategoryPage,
-                meta: { categoryId: Category.id },
-            })
-        })
     },
     methods: {
         ...mapMutations('cart', ['toggleCart']),
@@ -164,6 +165,12 @@ export default {
                     image: doc.data().image,
                 })
             })
+        },
+        getLocalData(){
+            this.localDataCat = DataService.data.categories;
+            EventBus.$on('data-updated', (newData) => {
+                this.localDataCat = newData.categories;
+            });
         },
         navigateToCategory(categoryId) {
             this.$router.push({ name: 'CategoryPage', params: { categoryId } })

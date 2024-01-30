@@ -41,9 +41,9 @@ export default {
         MainPage
     },
     created(){
-        this.localData = DataService.data;
+        this.localData = DataService.data.products;
         EventBus.$on('data-updated', (newData) => {
-            this.localData = newData;
+            this.localData = newData.products;
         });
     },
     methods:{
