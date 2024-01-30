@@ -43,7 +43,7 @@
                         <div v-for="locCat in localDataCat" :key="locCat.id">
                             <div
                                 class="header__category-item"
-                                @click="navigateToCategory(cat.id)"
+                                @click="navigateToCategory(locCat.id)"
                             >
                                 {{ locCat.name }}
                             </div>

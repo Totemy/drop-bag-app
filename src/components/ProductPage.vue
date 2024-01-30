@@ -105,7 +105,7 @@ export default {
             this.product = await getProductsById(this.productIdToFind);
         },
         async getLocalData() {
-            let localData = DataService.data
+            let localData = DataService.data.products
             EventBus.$on('data-updated', (newData) => {
                 this.localData = newData
             })
