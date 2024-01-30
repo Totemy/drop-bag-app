@@ -27,11 +27,6 @@ const routes = [
     component: () => import("../components/global/Navbar.vue"),
   },
   {
-    path: '/category/:categoryId',
-    name: 'CategoryPage',
-    component: () => import ("../components/CategoryPage.vue")
-  },
-  {
     path: '/product/:productId',
     name: 'ProductPage',
     component: () => import ("../components/ProductPage.vue"),

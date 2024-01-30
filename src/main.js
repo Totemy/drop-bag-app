@@ -3,9 +3,13 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { DataService } from './services/DataService';
-const jsonData = require('./json/products.json');
+const products = require('./json/products.json');
+const categories = require('./json/categories.json');
 
-DataService.setData(jsonData);
+DataService.setData({
+  products: products,
+  categories: categories
+});
 
 Vue.config.productionTip = false;
 

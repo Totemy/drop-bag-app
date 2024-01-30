@@ -24,7 +24,7 @@
       </div>
 </template>
 <script>
-import { collection, getFirestore, query, getDocs } from "firebase/firestore";
+import { getCategory } from '@/services/FirebaseDataService'
 
 
 export default {
@@ -39,17 +39,7 @@ export default {
   },
   methods: {
     async getCategory() {
-      const db = getFirestore(),
-        q = query(collection(db, "categories"));
-      const querySnapshot = await getDocs(q);
-      this.Category = [];
-      querySnapshot.forEach((doc) => {
-        this.Category.push({
-          id: doc.id,
-          name: doc.data().name,
-          image: doc.data().image,
-        });
-      });
+      this.Category = await getCategory()
     },
     navigateToCategory(categoryId) {
       this.$router.push({ name: 'CategoryPage', params: { categoryId } });

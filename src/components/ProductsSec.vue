@@ -29,13 +29,7 @@
     </div>
 </template>
 <script>
-import {
-  getFirestore,
-  query,
-  getDocs,
-  collectionGroup,
-} from "firebase/firestore";
-const db = getFirestore();
+import { getProducts } from '@/services/FirebaseDataService'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Products",
@@ -51,36 +45,13 @@ export default {
   },
   methods: {
     async getProducts() {
-      const sousCollectionRef = query(collectionGroup(db, `products`));
-      const sousCollectionSnapshot = await getDocs(sousCollectionRef);
-      this.Products = [];
-      sousCollectionSnapshot.forEach((doc) => {
-        this.Products.push({
-          id: doc.id,
-          name: doc.data().name,
-          description: doc.data().description,
-          price: doc.data().price,
-          image: doc.data().picture[0],
-        });
-      });
+
+      this.Products = await getProducts();
+
     },
     addToCart(product) {
       this.$root.$emit("addToCart", product);
     },
-    onFilteredProds(Products) {
-      this.filteredProducts = Products;
-      this.scrollToResults();
-    },
-    scrollToResults() {
-      const resultsSection = this.$refs.resultsSection;
-      resultsSection.scrollIntoView({ behavior: "smooth" });
-    },
-  },
-  mounted() {
-    this.$root.$on("filtered-Products", this.onFilteredProds);
-  },
-  beforeUnmount() {
-    this.$root.$off("filtered-Products", this.onFilteredProds);
   },
 };
 </script>

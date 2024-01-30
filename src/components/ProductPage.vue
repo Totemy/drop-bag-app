@@ -63,7 +63,7 @@
 <script>
 import Carousel from '@/components/CarouselPage.vue'
 import Proposal from '@/components/ProposalPage.vue'
-import { getProducts } from '@/services/FirebaseDataService.js';
+import { getProductsById } from '@/services/FirebaseDataService.js'
 import { DataService, EventBus } from '../services/DataService'
 import { mapGetters } from 'vuex'
 export default {
@@ -102,7 +102,7 @@ export default {
             this.$router.go(-1)
         },
         async loadProduct() {
-            this.product = await getProducts(this.productIdToFind);
+            this.product = await getProductsById(this.productIdToFind);
         },
         async getLocalData() {
             let localData = DataService.data
