@@ -18,6 +18,18 @@
     {
         "name": "Columbia",
         "id": "5"
+    },
+    {
+        "name": "Salomon",
+        "id": "6"
+    },
+    {
+        "name": "Asics Gel-Kahana",
+        "id": "7"
+    },
+    {
+        "name": "New Balance",
+        "id": "8"
     }
 
 ]
