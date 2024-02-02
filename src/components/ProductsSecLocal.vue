@@ -2,7 +2,7 @@
     <div>
         <div class="product-page">
                 <ul class="product-page__list">
-                    <li v-for="product in localData" :key="product.id" class="catalog-item">
+                    <li v-for="product in currentPageProducts" :key="product.id" class="catalog-item">
                         <div class="catalog-content">
                             <div class="product-page__img-wrap" @click="navigateToProduct(product.id)">
                                 <img
@@ -25,16 +25,26 @@
                         </div>
                     </li>
                 </ul>
+            <div class="pagination__tabs">
+                <button v-for="page in totalPages" :key="page" @click="changePage(page)"
+                        :class="{ active: page === currentPage }"
+                class="pagination__button">
+                    {{ page }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
 <script>
 import { DataService, EventBus } from '@/services/DataService';
 import MainPage from '@/components/global/MainPage.vue'
+import { paginationService } from '@/services/paginationService'
 export default {
     data(){
         return{
-            localData:[]
+            localData:[],
+            itemsPerPage:9,
+            currentPage:1
         }
     },
     components(){
@@ -46,7 +56,18 @@ export default {
             this.localData = newData.products;
         });
     },
+    computed:{
+        totalPages() {
+            return paginationService.getTotalPages(this.localData, this.itemsPerPage);
+        },
+        currentPageProducts() {
+            return paginationService.paginate(this.localData, this.currentPage, this.itemsPerPage);
+        }
+    },
     methods:{
+        changePage(page) {
+            this.currentPage = page;
+        },
         navigateToProduct(productId){
             this.$router.push({ name: 'ProductPage', params: { productId } });
             document.documentElement.scrollTop = 0;
