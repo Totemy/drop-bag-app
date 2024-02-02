@@ -67,6 +67,7 @@ export default {
     methods:{
         changePage(page) {
             this.currentPage = page;
+            document.documentElement.scrollTop = 0; //todo go to start products
         },
         navigateToProduct(productId){
             this.$router.push({ name: 'ProductPage', params: { productId } });
