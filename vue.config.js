@@ -9,4 +9,13 @@ module.exports = defineConfig({
       }
     }
   },
+  devServer: {
+    proxy: {
+      '/novaposhta-api': {
+        target: 'https://api.novaposhta.ua/v2.0/json/',
+        changeOrigin: true,
+        pathRewrite: { '^/novaposhta-api': '' },
+      },
+    },
+  },
 })

@@ -3,8 +3,13 @@
         <div>
             <h2>Оформлення замовлення</h2>
             <div class="checkout__personal">
-                <h4>Прізвище ім'я по батькові</h4>
-                <input class="checkout__input" type="text" placeholder="ПІБ" v-model="name" />
+                <h4>Прізвище</h4>
+                <input class="checkout__input" type="text" placeholder="Прізвище" v-model="name" />
+                <h4>Ім'я</h4>
+                <input class="checkout__input" type="text" placeholder="Ім'я" v-model="surname" />
+                <h4>По батькові</h4>
+                <input class="checkout__input" type="text" placeholder="По батькові" v-model="lastname" />
+
                 <h4>
                     Номер телефону
                 </h4>
@@ -17,7 +22,7 @@
                     @keydown="handleKeyDown"
                 />
                 <h4>Місто проживання</h4>
-                <input class="checkout__input" type="text"  v-model="city"/>
+                <input class="checkout__input" type="text"  v-model="city" @input="handleInputChangeCity"/>
 
             </div>
             <div class="checkout__footer">
@@ -35,13 +40,17 @@
 import Inputmask from 'inputmask';
 import { mapGetters } from 'vuex';
 import  emailjs from '@emailjs/browser'
+import {getAdress} from '@/services/NovaPoshtaService'
 export default {
     data() {
         return {
             phoneNumber: '',
             name: '',
+            surname:'',
+            lastname:'',
             city: '',
             sum: null,
+            responseData: null,
         }
     },
     computed: {
@@ -52,8 +61,22 @@ export default {
     },
     mounted() {
         this.initializeInputMask();
+        this.sumOfProducts();
+        //this.fetchData();
     },
     methods: {
+        async fetchData() {
+            try {
+                this.responseData  = await getAdress();
+
+                console.log(this.responseData)
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        },
+        handleInputChangeCity(){
+
+        },
         initializeInputMask() {
             Inputmask({
                 mask: '+380 99 999 99 99',
@@ -86,6 +109,8 @@ export default {
             });
             let params = {
                 name: this.name,
+                surname: this.surname,
+                lastname: this.lastname,
                 offer: JSON.stringify(items),
                 city: this.city,
                 phone: this.formattedPhoneNumber,

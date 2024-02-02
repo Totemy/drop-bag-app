@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_KEY = process.env.VUE_APP_API_KEY;
-const API_URL = process.env.VUE_APP_API_URL;
+const API_KEY = "fc532f0b68f563638171396db1bc8485";
+const API_URL = "https://api.novaposhta.ua/v2.0/json/";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
@@ -11,5 +11,20 @@ const axiosInstance = axios.create({
     'Api-Key': API_KEY,
   },
 });
+export async function getAdress() {
+  try {
+    const response = await axiosInstance.get("", {
+      apiKey: API_KEY,
+      modelName: "Address",
+      calledMethod: "getSettlements",
+      methodProperties: {
 
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
 export default axiosInstance;
