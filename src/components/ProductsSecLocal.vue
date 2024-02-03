@@ -37,7 +37,7 @@
                         </div>
                     </li>
                 </ul>
-            <div class="pagination__tabs">
+            <div v-if="filteredProducts.length > itemsPerPage"  class="pagination__tabs">
                 <button v-if="currentPage > 1" @click="prevPage" class="pagination__button">&lt;</button>
                 <button v-for="page in totalPages" :key="page" @click="changePage(page)"
                         :class="{ active: page === currentPage }"
@@ -71,7 +71,7 @@ export default {
     },
     computed:{
         totalPages() {
-            return paginationService.getTotalPages(this.localData, this.itemsPerPage);
+            return paginationService.getTotalPages(this.filteredProducts, this.itemsPerPage);
         },
         currentPageProducts() {
             return paginationService.paginate(this.filteredProducts, this.currentPage, this.itemsPerPage);

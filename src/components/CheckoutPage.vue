@@ -73,6 +73,7 @@ export default {
             number_np: '',
             sum: null,
             responseData: null,
+            showModal: false,
         }
     },
     computed: {
