@@ -1,6 +1,18 @@
 <template>
     <div>
         <div class="product-page">
+            <div class="product-page__filter">
+                <label for="category">Бренд :</label>
+                <select v-model="selectedCategory" @change="applyFilters">
+                    <option class="product-page__filter-item" value="">Всі</option>
+                    <option class="product-page__filter-item" v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                </select>
+
+                <label for="sizes">Розмір :</label>
+                <select v-model="selectedSizes" @change="applyFilters"  >
+                    <option class="product-page__filter-item" v-for="size in allSizes" :key="size">{{ size }}</option>
+                </select>
+            </div>
                 <ul class="product-page__list">
                     <li v-for="product in currentPageProducts" :key="product.id" class="catalog-item">
                         <div class="catalog-content">
@@ -39,19 +51,18 @@
 </template>
 <script>
 import { DataService, EventBus } from '@/services/DataService';
-import MainPage from '@/components/global/MainPage.vue'
 import { paginationService } from '@/services/paginationService'
 export default {
     data(){
         return{
             localData:[],
             itemsPerPage:9,
-            currentPage:1
+            currentPage:1,
+            selectedCategory: '',
+            selectedSizes: [],
         }
     },
-    components(){
-        MainPage
-    },
+
     created(){
         this.localData = DataService.data.products;
         EventBus.$on('data-updated', (newData) => {
@@ -63,8 +74,31 @@ export default {
             return paginationService.getTotalPages(this.localData, this.itemsPerPage);
         },
         currentPageProducts() {
-            return paginationService.paginate(this.localData, this.currentPage, this.itemsPerPage);
-        }
+            return paginationService.paginate(this.filteredProducts, this.currentPage, this.itemsPerPage);
+        },
+        categories() {
+            return DataService.data.categories;
+        },
+        allSizes() {
+            // Get all available sizes from products
+            return this.localData.reduce((sizes, product) => {
+                return sizes.concat(product.sizes);
+            }, []).filter((value, index, self) => {
+                return self.indexOf(value) === index;
+            });
+        },
+        filteredProducts() {
+            let filtered = this.localData;
+            if (this.selectedCategory) {
+                filtered = filtered.filter(product => product.cat === this.selectedCategory);
+            }
+            if (this.selectedSizes.length > 0) {
+                filtered = filtered.filter(product => {
+                    return product.sizes.some(size => this.selectedSizes.includes(size));
+                });
+            }
+            return filtered;
+        },
     },
     methods:{
         changePage(page) {
@@ -95,7 +129,13 @@ export default {
                 this.currentPage--;
                 this.scrollToProductPage();
             }
-        }
+        },
+        applyFilters() {
+            this.currentPage = 1;
+            console.log("Selected Category:", this.selectedCategory);
+            console.log("Selected Sizes:", this.selectedSizes);
+            this.$forceUpdate()
+        },
     }
 }
 </script>

@@ -57,4 +57,16 @@
     overflow: hidden;
     border-radius: 40px;
   }
+  &__filter{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+  }
+  &__filter-item{
+    cursor: pointer;
+    &:hover{
+      background-color: $second-color;
+      color: $main-color;
+    }
+  }
 }
