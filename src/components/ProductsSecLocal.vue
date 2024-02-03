@@ -26,11 +26,13 @@
                     </li>
                 </ul>
             <div class="pagination__tabs">
+                <button v-if="currentPage > 1" @click="prevPage" class="pagination__button">&lt;</button>
                 <button v-for="page in totalPages" :key="page" @click="changePage(page)"
                         :class="{ active: page === currentPage }"
                 class="pagination__button">
                     {{ page }}
                 </button>
+                <button v-if="currentPage < totalPages" @click="nextPage" class="pagination__button"> &gt;</button>
             </div>
         </div>
     </div>
@@ -67,11 +69,32 @@ export default {
     methods:{
         changePage(page) {
             this.currentPage = page;
-            document.documentElement.scrollTop = 0; //todo go to start products
+            this.scrollToProductPage();
         },
         navigateToProduct(productId){
             this.$router.push({ name: 'ProductPage', params: { productId } });
             document.documentElement.scrollTop = 0;
+        },
+        scrollToProductPage() {
+            const productPage = document.querySelector('.product-page');
+            if (productPage) {
+                window.scrollTo({
+                    top: productPage.offsetTop,
+                    behavior: 'smooth' // Optional: for smooth scrolling effect
+                });
+            }
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+                this.scrollToProductPage();
+            }
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+                this.scrollToProductPage();
+            }
         }
     }
 }

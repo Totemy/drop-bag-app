@@ -1,7 +1,21 @@
 .pagination{
   text-align: center;
+  &__tabs{
+    text-align: center;
+  }
   &__button{
     font-size: 15px;
     margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid $second-color;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &__button.active{
+      color: red;
+      background-color: $second-color;
+    }
   }
 }
