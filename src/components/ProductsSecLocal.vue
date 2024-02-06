@@ -2,13 +2,13 @@
     <div>
         <div class="product-page">
             <div class="product-page__filter">
-                <label for="category">Бренд :</label>
+                <label for="category">Бренд : </label>
                 <select v-model="selectedCategory" @change="applyFilters">
                     <option class="product-page__filter-item" value="">Всі</option>
                     <option class="product-page__filter-item" v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
                 </select>
 
-                <label for="sizes">Розмір :</label>
+                <label for="sizes">Розмір : </label>
                 <select v-model="selectedSizes" @change="applyFilters"  >
                     <option class="product-page__filter-item" v-for="size in allSizes" :key="size">{{ size }}</option>
                 </select>
@@ -39,11 +39,14 @@
                 </ul>
             <div v-if="filteredProducts.length > itemsPerPage"  class="pagination__tabs">
                 <button v-if="currentPage > 1" @click="prevPage" class="pagination__button">&lt;</button>
-                <button v-for="page in totalPages" :key="page" @click="changePage(page)"
-                        :class="{ active: page === currentPage }"
-                class="pagination__button">
-                    {{ page }}
-                </button>
+                <div class="pagination__numbers">
+                    <button v-for="page in totalPages" :key="page" @click="changePage(page)"
+                            :class="{ active: page === currentPage }"
+                            class="pagination__button">
+                        {{ page }}
+                    </button>
+                </div>
+
                 <button v-if="currentPage < totalPages" @click="nextPage" class="pagination__button"> &gt;</button>
             </div>
         </div>
@@ -132,8 +135,6 @@ export default {
         },
         applyFilters() {
             this.currentPage = 1;
-            console.log("Selected Category:", this.selectedCategory);
-            console.log("Selected Sizes:", this.selectedSizes);
             this.$forceUpdate()
         },
     }
