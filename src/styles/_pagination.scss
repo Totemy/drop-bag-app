@@ -2,6 +2,13 @@
   text-align: center;
   &__tabs{
     text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  &__numbers{
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
   &__button{
     font-size: 15px;
