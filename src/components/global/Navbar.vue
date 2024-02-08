@@ -8,7 +8,7 @@
             </div>
             <div class="header__mob-list" v-if="openBar">
                 <div @click="routeToMainPage()">Головна</div>
-                <div @click="routeToMainPage()">Про нас</div>
+                <div> <router-link to="/about-us">Про нас</router-link> </div>
                 <div @click="toggleCart">Кошик</div>
                 <cart v-if="$store.state.cart.isOpen" @close="toggleCart"></cart>
             </div>
@@ -56,7 +56,7 @@
                         class="btn btn__navbar"
                         type="button"
                     >
-                        Про нас
+                     <router-link to="/about-us">Про нас</router-link>
                     </button>
                 </div>
                 <div >
@@ -181,6 +181,10 @@ export default {
             if (this.$route.path !== '/') {
                 this.$router.replace('/')
             }
+            this.openBar = false;
+        },
+        routeToAboutUs() {
+            this.$route.push({})
             this.openBar = false;
         },
         handleScroll() {

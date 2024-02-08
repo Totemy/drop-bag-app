@@ -6,4 +6,13 @@
     &__articles{
         padding: 50px 0px;
     }
+    &__icon{
+        width: 20px;
+        height: 20px;
+    }
+    &__social{
+        a{
+            color: $main-color;
+        }
+    }
 }
