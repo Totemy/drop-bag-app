@@ -73,7 +73,11 @@ export default {
                     console.error('New data is not an array:', localData);
                 }
             });
-        }
+        },
+        navigateToProduct(productId){
+            this.$router.push({ name: 'ProductPage', params: { productId } });
+            document.documentElement.scrollTop = 0;
+        },
     }
 }
 </script>

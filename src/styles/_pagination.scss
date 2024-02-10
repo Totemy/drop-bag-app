@@ -9,6 +9,10 @@
     @media screen and (max-width: 768px) {
       display: none;
     }
+    .active{
+      color: $main-color;
+      background-color: $second-color;
+    }
   }
   &__button{
     font-size: 15px;
@@ -20,9 +24,6 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    &__button.active{
-      color: red;
-      background-color: $second-color;
-    }
+
   }
 }

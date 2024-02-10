@@ -4,21 +4,11 @@
   @media screen and (max-width: 768px) {
     margin-top: 50px;
   }
-  &__header{
+  &__header {
     margin-left: 128px;
     @media screen and (max-width: 768px) {
       margin-left: 0;
     }
-  }
-
-  &__img{
-    display: block;
-    max-width: 100%;
-    height: auto;
-    width: -webkit-fill-available;
-  }
-  &__card{
-
   }
   &__list{
     display: flex;
@@ -46,11 +36,14 @@
   &__img{
     border-radius: 40px;
     width: 450px;
-    height: 550px;
+    height: 430px;
     object-fit: cover;
     transition: 1s;
+    position: relative;
+   
     &:hover{
-      transform: scale(1.2);
+      transform: scale(1.1);
+
     }
   }
   &__img-wrap{

@@ -14,7 +14,7 @@
                 </select>
             </div>
                 <ul class="product-page__list">
-                    <li v-for="product in currentPageProducts" :key="product.id" class="catalog-item">
+                    <li v-for="product in currentPageProducts" :key="product.id" class="product-page__card">
                         <div class="catalog-content">
                             <div class="product-page__img-wrap" @click="navigateToProduct(product.id)">
                                 <img

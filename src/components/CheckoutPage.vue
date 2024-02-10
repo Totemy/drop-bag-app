@@ -39,6 +39,9 @@
                         </div>
                     </div>
                 </div>
+                <div>
+                    <textarea class="checkout__input" type="text"  v-model="massage" @input="handleInputChangeCity" placeholder="Питання побажання"/>
+                </div>
             </div>
             <div class="checkout__product">
                 <h2> Ваше замовлення</h2>
@@ -71,6 +74,7 @@ export default {
             city: '',
             region: '',
             number_np: '',
+            massage: '',
             sum: null,
             responseData: null,
             showModal: false,
@@ -143,6 +147,7 @@ export default {
                 region: this.region,
                 number_np: this.number_np,
                 phone: this.formattedPhoneNumber,
+                massage: this.massage
             };
             emailjs.send('service_pq1z0dp', 'template_7bdafnn', params, '_VH4zMsf2RUD93h6l')
                 .then(function(response) {
