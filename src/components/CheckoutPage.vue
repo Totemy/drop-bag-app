@@ -30,6 +30,10 @@
                     <input class="checkout__input" type="text"  v-model="city" @input="handleInputChangeCity" placeholder="Місто/Населений пункт"/>
                     <h5>Номер відділення Нової Пошти</h5>
                     <input class="checkout__input" type="text"  v-model="number_np" @input="handleInputChangeCity" placeholder="Номер відділення"/>
+                    <h5> Залишити комментар : </h5>
+                    <div>
+                        <textarea class="checkout__textarea" type="text"  v-model="massage" @input="handleInputChangeCity" placeholder="Питання побажання"/>
+                    </div>
                 </div>
                 <div class="checkout__footer">
                     <div>
@@ -39,9 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <textarea class="checkout__input" type="text"  v-model="massage" @input="handleInputChangeCity" placeholder="Питання побажання"/>
-                </div>
+
             </div>
             <div class="checkout__product">
                 <h2> Ваше замовлення</h2>
