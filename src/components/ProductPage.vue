@@ -37,10 +37,13 @@
                         <div class="product__button-buy">
                             <button
                                 class="btn btn__addtocart"
-                                @click="addToCart(product)"
+                                @click="addToCart(product); showSuccessMessage = true"
                             >
                                 Додати до кошика
                             </button>
+                            <div v-if="showSuccessMessage">
+                                <p style="color: green">Успішно додано до кошика</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,6 +85,7 @@ export default {
             selectedSize: null,
             selectedColor: null,
             cartitems: [],
+            showSuccessMessage: false
         }
     },
     created() {
@@ -122,7 +126,7 @@ export default {
         prevImage() {
             this.currentImageIndex = (this.currentImageIndex - 1 + this.productImages.length) % this.productImages.length;
         },
-        
+
     },
 }
 </script>

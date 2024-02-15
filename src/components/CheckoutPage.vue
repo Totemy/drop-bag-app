@@ -5,9 +5,9 @@
             <div class="checkout__personal">
                 <h2>Оформлення замовлення</h2>
                 <h4>Прізвище</h4>
-                <input class="checkout__input" type="text" placeholder="Прізвище" v-model="name" />
+                <input class="checkout__input" type="text" placeholder="Прізвище" v-model="surname" />
                 <h4>Ім'я</h4>
-                <input class="checkout__input" type="text" placeholder="Ім'я" v-model="surname" />
+                <input class="checkout__input" type="text" placeholder="Ім'я" v-model="name" />
                 <h4>По батькові</h4>
                 <input class="checkout__input" type="text" placeholder="По батькові" v-model="lastname" />
 
@@ -135,6 +135,11 @@ export default {
             this.product = this.cartItems
         },
         sendCheckout(){
+            if (!this.name || !this.surname || !this.lastname || !this.city || !this.region || !this.number_np || !this.phoneNumber) {
+                // If any of the required fields are empty, return without sending the message
+                alert('Будь ласка заповніть форму');
+                return;
+            }
             const items = this.cartItems.map(offerItems => {
                 // eslint-disable-next-line no-unused-vars
                 const { images, ...itemWithoutUnwantedFields } = offerItems;
