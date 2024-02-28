@@ -40,10 +40,13 @@
     object-fit: cover;
     transition: 1s;
     position: relative;
-   
+    background-color: #fcfcfc;
     &:hover{
       transform: scale(1.1);
 
+    }
+    @media screen and (max-width: 768px) {
+      width: 370px;
     }
   }
   &__img-wrap{
