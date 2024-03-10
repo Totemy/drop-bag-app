@@ -64,7 +64,6 @@
 import Inputmask from 'inputmask';
 import { mapGetters } from 'vuex';
 import  emailjs from '@emailjs/browser'
-import {getAdress} from '@/services/NovaPoshtaService'
 export default {
     data() {
         return {
@@ -97,7 +96,6 @@ export default {
     methods: {
         async fetchData() {
             try {
-                this.responseData  = await getAdress();
 
                 console.log(this.responseData)
             } catch (error) {
