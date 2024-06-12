@@ -52,11 +52,11 @@
                 </div>
                 <div>
                     <button
-                        @click="routeToMainPage()"
                         class="btn btn__navbar"
                         type="button"
+                        @click="routeToAboutUs()"
                     >
-                     <router-link to="/about-us">Про нас</router-link>
+                     Про нас
                     </button>
                 </div>
                 <div >
@@ -184,7 +184,9 @@ export default {
             this.openBar = false;
         },
         routeToAboutUs() {
-            this.$route.push({})
+            if (this.$route.path !== '/about-us') {
+                this.$router.replace('/about-us')
+            }
             this.openBar = false;
         },
         handleScroll() {
